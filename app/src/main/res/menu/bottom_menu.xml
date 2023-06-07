@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/frm_beranda"
+        android:title="Beranda"
+        android:icon="@drawable/selector_beranda" />
+    <item
+        android:id="@+id/frm_absensi"
+        android:title="Tabulasi"
+        android:icon="@drawable/selector_add" />
+    <item
+        android:id="@+id/frm_profil"
+        android:title="Profil"
+        android:icon="@drawable/selector_profil" />
+
+</menu>

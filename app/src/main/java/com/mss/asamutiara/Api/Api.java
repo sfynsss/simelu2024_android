@@ -1,0 +1,70 @@
+package com.mss.asamutiara.Api;
+
+import com.mss.asamutiara.Response.BaseResponse;
+import com.mss.asamutiara.Response.UserResponse;
+import com.mss.asamutiara.Table.CekSession;
+import com.mss.asamutiara.Table.DapilKabupaten;
+import com.mss.asamutiara.Table.Hierarki;
+import com.mss.asamutiara.Table.Kabupaten;
+import com.mss.asamutiara.Table.Relawan;
+
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
+public interface Api {
+
+    @FormUrlEncoded
+    @POST("login")
+    Call<UserResponse> login(
+            @Field("username") String username,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("hierarki/getOption")
+    Call<BaseResponse<Hierarki>> getHierarki(
+            @Field("hierarki_id") String hierarki_id
+    );
+
+    @FormUrlEncoded
+    @POST("kabupaten/getOption")
+    Call<BaseResponse<Kabupaten>> getKabupaten(
+            @Field("provinsi_id") String provinsi_id
+    );
+
+    @FormUrlEncoded
+    @POST("dapilKabupaten/getOption")
+    Call<BaseResponse<DapilKabupaten>> getDapilKabupaten(
+            @Field("kabupaten_id") String kabupaten_id
+    );
+
+    @GET("cekSession")
+    Call<BaseResponse<CekSession>> cekSession();
+
+    @GET("getRelawan")
+    Call<BaseResponse<Relawan>> getRelawan();
+
+    @FormUrlEncoded
+    @POST("createRelawan")
+    Call<BaseResponse> createRelawan(
+            @Field("nama") String nama,
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("nik") String nik,
+            @Field("dapil_provinsi") String dapil_provinsi,
+            @Field("kabupaten") String kabupaten,
+            @Field("dapil_kabupaten") String dapil_kabupaten,
+            @Field("kecamatan") String kecamatan,
+            @Field("desa") String desa,
+            @Field("tps") String tps,
+            @Field("calon") String calon,
+            @Field("no_telp") String no_telp,
+            @Field("target") String target,
+            @Field("hierarki") String hierarki,
+            @Field("relawan_id") String relawan_id
+    );
+}

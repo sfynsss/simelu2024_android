@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Activity.BerandaFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/ly_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:background="@drawable/dashboard_bg_header"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp">
+
+                    <ImageView
+                        android:id="@+id/img_logo"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/icon_putih"></ImageView>
+
+                    <TextView
+                        android:id="@+id/txt_welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/img_logo"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="4dp"
+                        android:text="Selamat datang di"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"></TextView>
+
+                    <TextView
+                        android:id="@+id/txt_soebandi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_welcome"
+                        android:layout_centerHorizontal="true"
+                        android:text="E-Presensi DigiOffice"
+                        android:textColor="#FFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold"></TextView>
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/section"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="-50dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="10dp"
+                        android:weightSum="10">
+
+                        <ImageView
+                            android:id="@+id/img_profil"
+                            android:layout_width="0dp"
+                            android:layout_height="82dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="2"
+                            android:background="@drawable/person_rectangle"></ImageView>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="5.5"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/nama_pengguna"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:layout_toRightOf="@+id/img_profil"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="Fulan bin fulan"
+                                android:textColor="@color/green_dark"
+                                android:textSize="14sp"
+                                android:textStyle="bold"></TextView>
+
+                            <TextView
+                                android:id="@+id/nama_hierarki"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nama_pengguna"
+                                android:layout_marginLeft="8dp"
+                                android:layout_toRightOf="@+id/img_profil"
+                                android:text="Koordinator Dapil Provinsi"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"></TextView>
+
+                            <TextView
+                                android:id="@+id/nama_calon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/nip_pengguna"
+                                android:layout_marginLeft="8dp"
+                                android:layout_toRightOf="@+id/img_profil"
+                                android:text="Calon Fawait"
+                                android:textSize="12sp"></TextView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="2.5"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text="TARGET"
+                                android:textStyle="bold"></TextView>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/bt_primary_round">
+
+                                <TextView
+                                    android:id="@+id/target"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="10 / 100"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Menu Beranda"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+
+                <LinearLayout
+                    android:id="@+id/btn_relawan_anggota"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bt_white_round">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/ic_relawan"></ImageView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Relawan Anggota"
+                            android:textColor="#000"
+                            android:textSize="16sp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lihat relawan anggota"
+                            android:textColor="#AAA"
+                            android:textStyle="italic"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_logistik"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bt_white_round">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:background="@drawable/ic_logistik"></ImageView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Logistik"
+                            android:textColor="#000"
+                            android:textSize="16sp"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lihat data logistik"
+                            android:textColor="#AAA"
+                            android:textStyle="italic"></TextView>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Activity.AlertBerhasilActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/icon_text_simelu"></ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Berhasil"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/green_dark">
+    </TextView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/green_dark">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Input Data Berhasil"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/green_dark">
+        </TextView>
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_fileName="success-check.json">
+    </com.airbnb.lottie.LottieAnimationView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        app:cardElevation="10dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_home"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Kembali"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/bt_primary_round"/>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

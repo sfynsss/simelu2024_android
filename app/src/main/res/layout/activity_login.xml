@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F0F0F0"
+    tools:context=".Activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:background="@drawable/login_bg_header"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="75dp"
+            android:background="@drawable/icon_text_simelu"></ImageView>
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_marginTop="-60dp"
+        android:layout_marginHorizontal="32dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:elevation="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="LOGIN SiMELU"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="Username"
+                android:textColor="@color/black">
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bt_white_round"
+                android:paddingHorizontal="12dp">
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="2dp"
+                    android:hint="Masukkan username Anda"
+                    android:background="@color/white"
+                    android:textSize="14sp"
+                    android:inputType="textEmailAddress">
+                </EditText>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:text="Password"
+                android:textColor="@color/black">
+            </TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bt_white_round"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:weightSum="10">
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:layout_marginVertical="2dp"
+                    android:hint="Masukkan password Anda"
+                    android:background="@color/white"
+                    android:inputType="textPassword"
+                    android:textSize="14sp">
+                </EditText>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/show_password"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_eye_open">
+                    </ImageView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="16dp"
+        app:cardElevation="10dp"
+        android:elevation="10dp">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bt_primary_round"
+            android:textColor="@color/white"
+            android:text="Login"></androidx.appcompat.widget.AppCompatButton>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/lupa_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="Lupa Password ?"
+        android:textColor="@color/green_primary"
+        android:textStyle="bold"></TextView>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="invisible"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:theme="@style/progressBarBlue"></ProgressBar>
+
+</LinearLayout>

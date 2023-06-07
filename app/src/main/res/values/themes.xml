@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ViewAbsensi" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorPrimaryVariant">@color/green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/green_secondary</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textViewStyle">@style/PoppinTextViewStyle</item>
+        <item name="buttonStyle">@style/PoppinButtonStyle</item>
+    </style>
+
+    <style name="Theme.ViewAbsensi.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ViewAbsensi.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ViewAbsensi.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="progressBarBlue" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+    <style name="PoppinTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="PoppinButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+    </style>
+</resources>

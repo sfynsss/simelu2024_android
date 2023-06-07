@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mss.asamutiara">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission
+        android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
+        tools:ignore="ProtectedPermissions" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ViewAbsensi"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".Activity.InputC1Induk"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.input_data_relawan"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DataRelawanActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBhYpivDh3X593xIjPmfgqiMP3eB6KSbZM" />
+
+        <activity
+            android:name=".Activity.UbahProfilActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.AlertBerhasilActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.EditProfilActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.UserProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>

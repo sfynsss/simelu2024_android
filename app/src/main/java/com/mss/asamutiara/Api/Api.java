@@ -4,9 +4,13 @@ import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Response.UserResponse;
 import com.mss.asamutiara.Table.CekSession;
 import com.mss.asamutiara.Table.DapilKabupaten;
+import com.mss.asamutiara.Table.Desa;
 import com.mss.asamutiara.Table.Hierarki;
 import com.mss.asamutiara.Table.Kabupaten;
+import com.mss.asamutiara.Table.Kecamatan;
 import com.mss.asamutiara.Table.Relawan;
+import com.mss.asamutiara.Table.Suara;
+import com.mss.asamutiara.Table.Tps;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -42,11 +46,32 @@ public interface Api {
             @Field("kabupaten_id") String kabupaten_id
     );
 
+    @FormUrlEncoded
+    @POST("kecamatan/getOption")
+    Call<BaseResponse<Kecamatan>> getKecamatan(
+            @Field("kabupaten_id") String kabupaten_id
+    );
+
+    @FormUrlEncoded
+    @POST("desa/getOption")
+    Call<BaseResponse<Desa>> getDesa(
+            @Field("kecamatan_id") String kecamatan_id
+    );
+
+    @FormUrlEncoded
+    @POST("tps/getOption")
+    Call<BaseResponse<Tps>> getTps(
+            @Field("desa_id") String desa_id
+    );
+
     @GET("cekSession")
     Call<BaseResponse<CekSession>> cekSession();
 
     @GET("getRelawan")
     Call<BaseResponse<Relawan>> getRelawan();
+
+    @GET("getSuara")
+    Call<BaseResponse<Suara>> getSuara();
 
     @FormUrlEncoded
     @POST("createRelawan")

@@ -27,6 +27,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".Activity.DataPengumpulanSuaraActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.InputC1Induk"
             android:exported="true" />
         <activity

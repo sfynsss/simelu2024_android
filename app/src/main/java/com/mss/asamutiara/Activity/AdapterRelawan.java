@@ -96,8 +96,4 @@ public class AdapterRelawan extends ArrayAdapter<String> {
         return super.getPosition(item);
     }
 
-    public interface OnEditLocationListener {
-        void onClickAdapter(int position);
-    }
-
 }

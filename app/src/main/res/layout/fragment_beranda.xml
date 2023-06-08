@@ -148,7 +148,7 @@
                                 android:background="@drawable/bt_primary_round">
 
                                 <TextView
-                                    android:id="@+id/target"
+                                    android:id="@+id/target_beranda"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
@@ -194,6 +194,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/judul_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Relawan Anggota"
@@ -202,6 +203,7 @@
                             android:textStyle="bold"></TextView>
 
                         <TextView
+                            android:id="@+id/detail_judul_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Lihat relawan anggota"

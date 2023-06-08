@@ -23,8 +23,11 @@ import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Session.Session;
 import com.mss.asamutiara.Table.CekSession;
 import com.mss.asamutiara.Table.DapilKabupaten;
+import com.mss.asamutiara.Table.Desa;
 import com.mss.asamutiara.Table.Hierarki;
 import com.mss.asamutiara.Table.Kabupaten;
+import com.mss.asamutiara.Table.Kecamatan;
+import com.mss.asamutiara.Table.Tps;
 
 import java.util.ArrayList;
 
@@ -40,10 +43,13 @@ public class input_data_relawan extends AppCompatActivity {
     Call<BaseResponse<Hierarki>> callHierarki;
     Call<BaseResponse<Kabupaten>> callKabupaten;
     Call<BaseResponse<DapilKabupaten>> callDapilKabupaten;
+    Call<BaseResponse<Kecamatan>> callKecamatan;
+    Call<BaseResponse<Desa>> callDesa;
+    Call<BaseResponse<Tps>> callTps;
     Call<BaseResponse> callCreateRelawan;
     Call<BaseResponse<CekSession>> cekSession;
 
-    Spinner hierarki, kabupaten, dapil_kabupaten;
+    Spinner hierarki, kabupaten, dapil_kabupaten, kecamatan, desa, tps;
     LinearLayoutCompat d_dapil_kabupaten, d_kabupaten, d_kecamatan, d_desa, d_tps;
     EditText nama_relawan, email_relawan, password_relawan, nik_relawan, no_telp_relawan,
     target_relawan;
@@ -57,6 +63,15 @@ public class input_data_relawan extends AppCompatActivity {
 
     ArrayList<String> list_dapil_kabupaten_id = new ArrayList<>();
     ArrayList<String> list_dapil_kabupaten = new ArrayList<>();
+
+    ArrayList<String> list_kecamatan_id = new ArrayList<>();
+    ArrayList<String> list_kecamatan = new ArrayList<>();
+
+    ArrayList<String> list_desa_id = new ArrayList<>();
+    ArrayList<String> list_desa = new ArrayList<>();
+
+    ArrayList<String> list_tps_id = new ArrayList<>();
+    ArrayList<String> list_tps = new ArrayList<>();
 
     String tmp_relawan_id = "";
     String tmp_dapil_provinsi_id = "";
@@ -87,6 +102,9 @@ public class input_data_relawan extends AppCompatActivity {
         hierarki = findViewById(R.id.hierarki);
         kabupaten = findViewById(R.id.kabupaten);
         dapil_kabupaten = findViewById(R.id.dapil_kabupaten);
+        kecamatan = findViewById(R.id.kecamatan);
+        desa = findViewById(R.id.desa);
+        tps = findViewById(R.id.tps);
         d_dapil_kabupaten = findViewById(R.id.d_dapil_kabupaten);
         d_kabupaten = findViewById(R.id.d_kabupaten);
         d_kecamatan = findViewById(R.id.d_kecamatan);
@@ -116,6 +134,7 @@ public class input_data_relawan extends AppCompatActivity {
             }
         });
     }
+
     public void getUser() {
         LoaderUi.show();
         cekSession = api.cekSession();
@@ -163,16 +182,25 @@ public class input_data_relawan extends AppCompatActivity {
         String tmp_no_telp_relawan = no_telp_relawan.getText().toString();
         String tmp_target_relawan = target_relawan.getText().toString();
 
-        if (hierarki.equals("2")) {
+        String tmp_hierarki = list_hierarki_id.get(hierarki.getSelectedItemPosition());
+        if (tmp_hierarki.equals("2")) {
             tmp_kabupaten_id = list_kabupaten_id.get(kabupaten.getSelectedItemPosition());
-        } else if (hierarki.equals("3")) {
+        } else if (tmp_hierarki.equals("3")) {
             tmp_dapil_kabupaten_id = list_dapil_kabupaten_id.get(dapil_kabupaten.getSelectedItemPosition());
+        } else if (tmp_hierarki.equals("4")) {
+            tmp_kecamatan_id = list_kecamatan_id.get(kecamatan.getSelectedItemPosition());
+        } else if (tmp_hierarki.equals("5")) {
+            tmp_desa_id = list_desa_id.get(desa.getSelectedItemPosition());
+        } else if (tmp_hierarki.equals("6")) {
+            tmp_tps_id = list_tps_id.get(tps.getSelectedItemPosition());
         }
 
-        callCreateRelawan = api.createRelawan(tmp_nama_relawan, tmp_email_relawan, tmp_password_relawan,
-                tmp_nik_relawan, tmp_dapil_provinsi_id, tmp_kabupaten_id+"",
-                "", "", "", "","",tmp_no_telp_relawan+"", tmp_target_relawan+"",
-                list_hierarki_id.get(hierarki.getSelectedItemPosition())+"", tmp_relawan_id+"");
+        callCreateRelawan = api.createRelawan(tmp_nama_relawan+"", tmp_email_relawan+"",
+                tmp_password_relawan+"", tmp_nik_relawan+"", tmp_dapil_provinsi_id,
+                tmp_kabupaten_id+"", tmp_dapil_kabupaten_id+"", tmp_kecamatan_id+"",
+                tmp_desa_id+"", tmp_tps_id+"", "", tmp_no_telp_relawan+"",
+                tmp_target_relawan+"", list_hierarki_id.get(hierarki.getSelectedItemPosition())+"",
+                tmp_relawan_id+"");
         callCreateRelawan.enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -236,8 +264,13 @@ public class input_data_relawan extends AppCompatActivity {
         if (hierarki.equals("2")) {
             getKabupaten(session.getProvinsiId());
         } else if (hierarki.equals("3")) {
-            Log.d("Kabupaten ID", "cekHierarki: "+tmp_kabupaten_id);
             getDapilKabupaten(tmp_kabupaten_id);
+        } else if (hierarki.equals("4")) {
+            getKecamatan(tmp_kabupaten_id);
+        } else if (hierarki.equals("5")) {
+            getDesa(tmp_kecamatan_id);
+        } else if (hierarki.equals("6")) {
+            getTps(tmp_desa_id);
         }
     }
 
@@ -315,4 +348,114 @@ public class input_data_relawan extends AppCompatActivity {
         });
     }
 
+    public void getKecamatan(String kabupaten_id){
+        LoaderUi.show();
+        d_kecamatan.setVisibility(View.VISIBLE);
+        callKecamatan = api.getKecamatan(kabupaten_id);
+        callKecamatan.enqueue(new Callback<BaseResponse<Kecamatan>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Kecamatan>> call, Response<BaseResponse<Kecamatan>> response) {
+                if (response.isSuccessful()) {
+                    LoaderUi.dismiss();
+                    list_kecamatan_id.clear();
+                    list_kecamatan.clear();
+
+                    for (int i = 0; i < response.body().getData().size(); i++) {
+//                        list_kota.add(response.body().getData().get(i).getType()+" "+response.body().getData().get(i).getCityName());
+                        list_kecamatan_id.add(response.body().getData().get(i).getId().toString());
+                        list_kecamatan.add(response.body().getData().get(i).getKecamatan());
+                    }
+
+                    //Ini buat ngisi Spinner
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_kecamatan);
+                    arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
+                    kecamatan.setAdapter(arrayAdapter);
+                } else {
+                    LoaderUi.dismiss();
+                    ApiError apiError = ErrorUtils.parseError(response);
+                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Kecamatan>> call, Throwable t) {
+                LoaderUi.dismiss();
+                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getDesa(String kecamatan_id){
+        LoaderUi.show();
+        d_desa.setVisibility(View.VISIBLE);
+        callDesa = api.getDesa(kecamatan_id);
+        callDesa.enqueue(new Callback<BaseResponse<Desa>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Desa>> call, Response<BaseResponse<Desa>> response) {
+                if (response.isSuccessful()) {
+                    LoaderUi.dismiss();
+                    list_desa_id.clear();
+                    list_desa.clear();
+
+                    for (int i = 0; i < response.body().getData().size(); i++) {
+//                        list_kota.add(response.body().getData().get(i).getType()+" "+response.body().getData().get(i).getCityName());
+                        list_desa_id.add(response.body().getData().get(i).getId().toString());
+                        list_desa.add(response.body().getData().get(i).getDesa());
+                    }
+
+                    //Ini buat ngisi Spinner
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_desa);
+                    arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
+                    desa.setAdapter(arrayAdapter);
+                } else {
+                    LoaderUi.dismiss();
+                    ApiError apiError = ErrorUtils.parseError(response);
+                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Desa>> call, Throwable t) {
+                LoaderUi.dismiss();
+                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getTps(String desa_id){
+        LoaderUi.show();
+        d_tps.setVisibility(View.VISIBLE);
+        callTps = api.getTps(desa_id);
+        callTps.enqueue(new Callback<BaseResponse<Tps>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<Tps>> call, Response<BaseResponse<Tps>> response) {
+                if (response.isSuccessful()) {
+                    LoaderUi.dismiss();
+                    list_tps_id.clear();
+                    list_tps.clear();
+
+                    for (int i = 0; i < response.body().getData().size(); i++) {
+//                        list_kota.add(response.body().getData().get(i).getType()+" "+response.body().getData().get(i).getCityName());
+                        list_tps_id.add(response.body().getData().get(i).getId().toString());
+                        list_tps.add(response.body().getData().get(i).getDesa()+" "+response.body().getData().get(i).getNomerTps());
+                    }
+
+                    //Ini buat ngisi Spinner
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_tps);
+                    arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
+                    tps.setAdapter(arrayAdapter);
+                } else {
+                    LoaderUi.dismiss();
+                    ApiError apiError = ErrorUtils.parseError(response);
+                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Tps>> call, Throwable t) {
+                LoaderUi.dismiss();
+                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

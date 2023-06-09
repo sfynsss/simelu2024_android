@@ -16,7 +16,8 @@ public class Session {
     }
 
     public void setUserStatus(Boolean loggedIn, String id_user, String nik, String nama, String token, String target, String hierarki_id,
-                              String nama_hierarki, String nama_calon, String desa, String kecamatan, String kabupaten, String provinsi_id) {
+                              String nama_hierarki, String nama_calon, String desa, String kecamatan, String kabupaten, String provinsi_id,
+                              String provinsi) {
         editor.putBoolean("loggedIn", loggedIn);
         editor.putString("id_user", id_user);
         editor.putString("nik", nik);
@@ -30,6 +31,7 @@ public class Session {
         editor.putString("kecamatan", kecamatan);
         editor.putString("kabupaten", kabupaten);
         editor.putString("provinsi_id", provinsi_id);
+        editor.putString("provinsi", provinsi);
         editor.commit();
     }
 
@@ -91,6 +93,23 @@ public class Session {
 
     public String getProvinsiId() {
         return preferences.getString("provinsi_id", "");
+    }
+
+    public String getProvinsi() {
+        return preferences.getString("provinsi", "");
+    }
+
+    public void setWilayah(String provinsi, String kabupaten, String kecamatan, String desa, String tps) {
+        editor.putString("filter_provinsi", provinsi);
+        editor.putString("filter_kabupaten", kabupaten);
+        editor.putString("filter_kecamatan", kecamatan);
+        editor.putString("filter_desa", desa);
+        editor.putString("filter_tps", tps);
+        editor.commit();
+    }
+
+    public String getTpsActive() {
+        return preferences.getString("filter_tps", "");
     }
 }
 

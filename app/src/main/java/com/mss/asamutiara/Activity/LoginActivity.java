@@ -63,10 +63,14 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
                         if (response.isSuccessful()) {
-                            session.setUserStatus(true, response.body().getUser().getId().toString(), response.body().getUser().getNik(), response.body().getUser().getNama(),
-                                    response.body().getUser().getApiToken(), response.body().getUser().getTarget().toString(), response.body().getUser().getHierarkiId()+"",
-                                    response.body().getUser().getNamaHierarki(), response.body().getUser().getNamaCalon(), response.body().getUser().getDesa(),
-                                    response.body().getUser().getKecamatan(), response.body().getUser().getKabupaten(), response.body().getUser().getProvinsiId());
+                            session.setUserStatus(true, response.body().getUser().getId().toString(),
+                                    response.body().getUser().getNik(), response.body().getUser().getNama(),
+                                    response.body().getUser().getApiToken(), response.body().getUser().getTarget().toString(),
+                                    response.body().getUser().getHierarkiId()+"",
+                                    response.body().getUser().getNamaHierarki(), response.body().getUser().getNamaCalon(),
+                                    response.body().getUser().getDesa(),
+                                    response.body().getUser().getKecamatan(), response.body().getUser().getKabupaten(),
+                                    response.body().getUser().getProvinsiId(), response.body().getUser().getProvinsi());
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             finish();
                             Toast.makeText(LoginActivity.this, "Selamat datang "+response.body().getUser().getNama(), Toast.LENGTH_SHORT).show();

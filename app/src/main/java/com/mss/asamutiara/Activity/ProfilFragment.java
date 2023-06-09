@@ -42,7 +42,8 @@ public class ProfilFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 session.setUserStatus(false, "","", "", "", "",
-                        "", "", "", "", "", "","");
+                        "", "", "", "", "", "",
+                        "","");
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 getActivity().finish();
             }

@@ -1,11 +1,16 @@
 package com.mss.asamutiara.Activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mss.asamutiara.Api.Api;
 import com.mss.asamutiara.Api.RetrofitClient;
 import com.mss.asamutiara.Helpers.ApiError;
@@ -30,6 +35,7 @@ public class DataPengumpulanSuaraActivity extends AppCompatActivity {
     AdapterSuara adapterSuara;
 
     ListView list_suara;
+    FloatingActionButton btn_tambah;
 
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> nik = new ArrayList<>();
@@ -46,6 +52,16 @@ public class DataPengumpulanSuaraActivity extends AppCompatActivity {
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
 
         list_suara = findViewById(R.id.list_suara);
+        btn_tambah = findViewById(R.id.btn_tambah);
+
+        btn_tambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DataPengumpulanSuaraActivity.this, InputSuaraActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
 
         getDataSuara();
     }
@@ -86,5 +102,15 @@ public class DataPengumpulanSuaraActivity extends AppCompatActivity {
                 Toast.makeText(DataPengumpulanSuaraActivity.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == 1) {
+                getDataSuara();
+            }
+        }
     }
 }

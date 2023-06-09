@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse<CekSession>> call, Response<BaseResponse<CekSession>> response) {
                 if (response.isSuccessful()) {
-                    System.out.println("cek_session");
                     session.setUserStatus(true, response.body().getData().get(0).getId().toString(),
                             response.body().getData().get(0).getNik(),
                             response.body().getData().get(0).getNama(),
@@ -66,12 +65,14 @@ public class MainActivity extends AppCompatActivity {
                             response.body().getData().get(0).getDesa(),
                             response.body().getData().get(0).getKecamatan(),
                             response.body().getData().get(0).getKabupaten(),
-                            response.body().getData().get(0).getProvinsiId());
+                            response.body().getData().get(0).getProvinsiId().toString(),
+                            response.body().getData().get(0).getProvinsi());
                 } else {
                     ApiError apiError = ErrorUtils.parseError(response);
                     Toast.makeText(MainActivity.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                     session.setUserStatus(false, "","", "", "", "",
-                            "", "", "", "", "", "", "");
+                            "", "", "", "", "", "",
+                            "", "");
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
                 }

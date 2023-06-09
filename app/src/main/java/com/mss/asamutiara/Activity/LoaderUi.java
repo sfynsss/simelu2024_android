@@ -33,9 +33,13 @@ public class LoaderUi {
     }
 
     public void show() {
-        dialog.show();
+        if (!activity.isFinishing() && dialog != null) {
+            dialog.show();
+        }
     }
     public void dismiss() {
-        dialog.dismiss();
+        if (!activity.isFinishing() && dialog != null) {
+            dialog.dismiss();
+        }
     }
 }

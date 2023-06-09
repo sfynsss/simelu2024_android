@@ -64,7 +64,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/section"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="-50dp"
                     app:cardCornerRadius="10dp"
@@ -77,18 +77,41 @@
                         android:paddingHorizontal="10dp"
                         android:weightSum="10">
 
-                        <ImageView
-                            android:id="@+id/img_profil"
+                        <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="0dp"
-                            android:layout_height="82dp"
-                            android:layout_gravity="center"
+                            android:layout_height="match_parent"
                             android:layout_weight="2"
-                            android:background="@drawable/person_rectangle"></ImageView>
+                            android:orientation="vertical">
+                            <ImageView
+                                android:id="@+id/img_profil"
+                                android:layout_width="match_parent"
+                                android:layout_height="82dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/person_rectangle"></ImageView>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/bt_primary_round">
+
+                                <TextView
+                                    android:id="@+id/target"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text=""
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
+                            android:layout_marginVertical="5dp"
                             android:layout_weight="5.5"
                             android:orientation="vertical">
 
@@ -96,10 +119,9 @@
                                 android:id="@+id/nama_pengguna"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="6dp"
+                                android:layout_marginLeft="8dp"
                                 android:layout_toRightOf="@+id/img_profil"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Fulan bin fulan"
                                 android:textColor="@color/green_dark"
                                 android:textSize="14sp"
                                 android:textStyle="bold"></TextView>
@@ -111,7 +133,6 @@
                                 android:layout_below="@+id/nama_pengguna"
                                 android:layout_marginLeft="8dp"
                                 android:layout_toRightOf="@+id/img_profil"
-                                android:text="Koordinator Dapil Provinsi"
                                 android:textColor="@color/black"
                                 android:textSize="12sp"></TextView>
 
@@ -122,14 +143,14 @@
                                 android:layout_below="@+id/nip_pengguna"
                                 android:layout_marginLeft="8dp"
                                 android:layout_toRightOf="@+id/img_profil"
-                                android:text="Calon Fawait"
                                 android:textSize="12sp"></TextView>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
+                            android:layout_marginVertical="5dp"
                             android:layout_weight="2.5"
                             android:orientation="vertical">
 
@@ -138,23 +159,39 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="TARGET"
+                                android:text="Perolehan"
                                 android:textStyle="bold"></TextView>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="5dp"
-                                android:background="@drawable/bt_primary_round">
+                                android:layout_height="40dp"
+                                android:background="@drawable/bt_outline_secondary">
 
                                 <TextView
-                                    android:id="@+id/target_beranda"
+                                    android:id="@+id/perolehan"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="10 / 100"
-                                    android:textColor="@color/white"
+                                    android:text=""
+                                    android:textColor="@color/green_dark"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/bt_outline_danger">
+
+                                <TextView
+                                    android:id="@+id/kurang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text=""
+                                    android:textColor="#F44336"
                                     android:textStyle="bold" />
                             </RelativeLayout>
 

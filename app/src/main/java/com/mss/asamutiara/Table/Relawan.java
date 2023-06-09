@@ -94,6 +94,9 @@ public class Relawan {
     @SerializedName("tps")
     @Expose
     private String tps;
+    @SerializedName("suara_count")
+    @Expose
+    private Integer suaraCount;
 
     public Integer getId() {
         return id;
@@ -333,5 +336,13 @@ public class Relawan {
 
     public void setTps(String tps) {
         this.tps = tps;
+    }
+
+    public Integer getSuaraCount() {
+        return suaraCount;
+    }
+
+    public void setSuaraCount(Integer suaraCount) {
+        this.suaraCount = suaraCount;
     }
 }

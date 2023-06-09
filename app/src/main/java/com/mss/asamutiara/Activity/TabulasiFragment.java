@@ -1,8 +1,10 @@
 package com.mss.asamutiara.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ public class TabulasiFragment extends Fragment {
 
     FilterWilayah FilterWilayah;
     AppCompatImageView filter;
+    CardView data_induk;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,11 +27,19 @@ public class TabulasiFragment extends Fragment {
 
         FilterWilayah = new FilterWilayah(getContext(), getActivity());
         filter = view.findViewById(R.id.filter);
+        data_induk = view.findViewById(R.id.data_induk);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FilterWilayah.show();
+            }
+        });
+
+        data_induk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), InputC1Induk.class));
             }
         });
 

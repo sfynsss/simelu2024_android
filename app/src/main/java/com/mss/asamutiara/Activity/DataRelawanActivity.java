@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Session.Session;
 import com.mss.asamutiara.Table.Relawan;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -85,15 +87,20 @@ public class DataRelawanActivity extends AppCompatActivity {
                     terpenuhi.clear();
                     kekurangan_target.clear();
 
+                    DecimalFormat decimalFormat = new DecimalFormat("##.00");
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         id.add(response.body().getData().get(i).getId().toString());
                         hierarki.add(response.body().getData().get(i).getNamaHierarki());
                         nama.add(response.body().getData().get(i).getNama());
                         no_telp.add(response.body().getData().get(i).getNoTelp());
                         target.add(response.body().getData().get(i).getTarget().toString());
-                        persentase.add("0");
-                        terpenuhi.add("0");
-                        kekurangan_target.add("0");
+                        double suara = response.body().getData().get(i).getSuaraCount();
+                        double target = response.body().getData().get(i).getTarget();
+                        double tmp_persen = ((suara/target) * 100);
+                        persentase.add(Math.round(tmp_persen)+"%");
+                        terpenuhi.add(response.body().getData().get(i).getSuaraCount().toString());
+                        int tmp_kekurangan = response.body().getData().get(i).getSuaraCount() - response.body().getData().get(i).getTarget();
+                        kekurangan_target.add(tmp_kekurangan+"");
                     }
 
                     adapterRelawan = new AdapterRelawan(DataRelawanActivity.this, id, hierarki, nama,

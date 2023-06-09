@@ -58,6 +58,9 @@ public class CekSession {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("no_telp")
+    @Expose
+    private String noTelp;
     @SerializedName("desa")
     @Expose
     private String desa;
@@ -79,6 +82,9 @@ public class CekSession {
     @SerializedName("provinsi")
     @Expose
     private String provinsi;
+    @SerializedName("suara_count")
+    @Expose
+    private Integer suaraCount;
 
     public Integer getId() {
         return id;
@@ -224,6 +230,14 @@ public class CekSession {
         this.updatedAt = updatedAt;
     }
 
+    public String getNoTelp() {
+        return noTelp;
+    }
+
+    public void setNoTelp(String noTelp) {
+        this.noTelp = noTelp;
+    }
+
     public String getDesa() {
         return desa;
     }
@@ -278,6 +292,14 @@ public class CekSession {
 
     public void setProvinsi(String provinsi) {
         this.provinsi = provinsi;
+    }
+
+    public Integer getSuaraCount() {
+        return suaraCount;
+    }
+
+    public void setSuaraCount(Integer suaraCount) {
+        this.suaraCount = suaraCount;
     }
 
 }

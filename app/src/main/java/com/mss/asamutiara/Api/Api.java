@@ -4,6 +4,7 @@ import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Response.UserResponse;
 import com.mss.asamutiara.Table.CekSession;
 import com.mss.asamutiara.Table.DapilKabupaten;
+import com.mss.asamutiara.Table.DataInduk;
 import com.mss.asamutiara.Table.Desa;
 import com.mss.asamutiara.Table.Hierarki;
 import com.mss.asamutiara.Table.Kabupaten;
@@ -64,6 +65,21 @@ public interface Api {
             @Field("desa_id") String desa_id
     );
 
+    //    GET WILAYAH BY USER
+    @GET("kabupaten/getOptionByUser")
+    Call<BaseResponse<Kabupaten>> getKabupatenByUser(
+    );
+
+    @GET("kecamatan/getOptionByUser")
+    Call<BaseResponse<Kecamatan>> getKecamatanByUser();
+
+    @GET("desa/getOptionByUser")
+    Call<BaseResponse<Desa>> getDesaByUser();
+
+    @GET("tps/getOptionByUser")
+    Call<BaseResponse<Tps>> getTpsByUser();
+//    END OF GET WILAYAH BY USER
+
     @GET("cekSession")
     Call<BaseResponse<CekSession>> cekSession();
 
@@ -91,5 +107,39 @@ public interface Api {
             @Field("target") String target,
             @Field("hierarki") String hierarki,
             @Field("relawan_id") String relawan_id
+    );
+
+    @FormUrlEncoded
+    @POST("createSuara")
+    Call<BaseResponse> createSuara(
+            @Field("nik") String nik,
+            @Field("nama") String nama,
+            @Field("tps_id") String tps_id,
+            @Field("relawan_id") String relawan_id,
+            @Field("no_telp") String no_telp
+    );
+
+    @FormUrlEncoded
+    @POST("getDataInduk")
+    Call<BaseResponse<DataInduk>> getDataInduk(
+            @Field("tps_id") String tps_id
+    );
+
+    @FormUrlEncoded
+    @POST("storeDataInduk")
+    Call<BaseResponse> storeDataInduk(
+            @Field("tps_id") String tps_id,
+
+            @Field("dpt") String dpt,
+            @Field("dptb") String dptb,
+            @Field("dpk") String dpk,
+            @Field("dpktb") String dpktb,
+            @Field("jum_dp") String jum_dp,
+
+            @Field("p_dpt") String p_dpt,
+            @Field("p_dptb") String p_dptb,
+            @Field("p_dpk") String p_dpk,
+            @Field("p_dpktb") String p_dpktb,
+            @Field("jum_p_dp") String jum_p_dp
     );
 }

@@ -34,7 +34,7 @@ public class BerandaFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     LinearLayout btn_relawan_anggota;
 
-    TextView nama_pengguna, nama_hierarki, nama_calon, target;
+    TextView nama_pengguna, nama_hierarki, nama_calon, target, perolehan, kurang;
     TextView judul_button, detail_judul_button;
     ImageView img_profil;
 
@@ -62,7 +62,9 @@ public class BerandaFragment extends Fragment {
         nama_pengguna = view.findViewById(R.id.nama_pengguna);
         nama_hierarki = view.findViewById(R.id.nama_hierarki);
         nama_calon = view.findViewById(R.id.nama_calon);
-        target = view.findViewById(R.id.target_beranda);
+        target = view.findViewById(R.id.target);
+        perolehan = view.findViewById(R.id.perolehan);
+        kurang = view.findViewById(R.id.kurang);
         judul_button = view.findViewById(R.id.judul_button);
         detail_judul_button = view.findViewById(R.id.detail_judul_button);
 
@@ -110,6 +112,9 @@ public class BerandaFragment extends Fragment {
                         nama_calon.setVisibility(View.GONE);
                     }
                     target.setText(response.body().getData().get(0).getTarget().toString());
+                    perolehan.setText(response.body().getData().get(0).getSuaraCount().toString());
+                    int tmp_kurang = response.body().getData().get(0).getSuaraCount() - response.body().getData().get(0).getTarget();
+                    kurang.setText(tmp_kurang+"");
                     if (tmp_hierarki == 6) {
                         judul_button.setText("Pengumpulan Suara");
                         detail_judul_button.setText("Lihat data suara");
@@ -121,6 +126,11 @@ public class BerandaFragment extends Fragment {
                     LoaderUi2.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
                     Toast.makeText(getContext(), apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    session.setUserStatus(false, "","", "", "", "",
+                            "", "", "", "", "", "",
+                            "","");
+                    startActivity(new Intent(getContext(), LoginActivity.class));
+                    getActivity().finish();
                 }
             }
 

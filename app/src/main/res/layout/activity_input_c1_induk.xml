@@ -109,7 +109,6 @@
                                 android:background="@drawable/bt_outline_secondary"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -140,7 +139,6 @@
                                 android:background="@drawable/bt_outline_secondary"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -187,7 +185,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -218,7 +215,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -283,7 +279,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -314,7 +309,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -360,7 +354,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -390,7 +383,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -454,7 +446,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -485,7 +476,6 @@
                                 android:layout_marginHorizontal="5dp"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="5dp"
-                                android:enabled="false"
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
@@ -497,18 +487,41 @@
 
                 </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/simpan_data_induk"
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/bt_primary_round"
-                    android:text="SIMPAN"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp" />
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    android:layout_marginTop="20dp">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/simpan_data_induk"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="8"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bt_primary_round"
+                        android:text="SIMPAN"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp" />
+                    <RelativeLayout
+                        android:id="@+id/refresh"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bt_third_round">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_baseline_refresh_24" />
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </LinearLayout>
         </LinearLayout>

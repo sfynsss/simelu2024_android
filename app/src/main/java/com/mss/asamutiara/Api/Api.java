@@ -2,6 +2,8 @@ package com.mss.asamutiara.Api;
 
 import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Response.UserResponse;
+import com.mss.asamutiara.Table.Calon;
+import com.mss.asamutiara.Table.CalonPresiden;
 import com.mss.asamutiara.Table.CekSession;
 import com.mss.asamutiara.Table.DapilKabupaten;
 import com.mss.asamutiara.Table.DataInduk;
@@ -141,5 +143,26 @@ public interface Api {
             @Field("p_dpk") String p_dpk,
             @Field("p_dpktb") String p_dpktb,
             @Field("jum_p_dp") String jum_p_dp
+    );
+
+    @FormUrlEncoded
+    @POST("getCalonPresiden")
+    Call<BaseResponse<CalonPresiden>> getCalonPresiden(
+            @Field("tps_id") String tps_id
+    );
+
+    @FormUrlEncoded
+    @POST("updateSuaraPresiden")
+    Call<BaseResponse> updateSuaraPresiden(
+            @Field("tps_id") String tps_id,
+            @Field("jml_surat") String jml_surat,
+            @Field("jml_surat_kembali") String jml_surat_kembali,
+            @Field("jml_surat_tdk_digunakan") String jml_surat_tdk_digunakan,
+            @Field("jml_surat_digunakan") String jml_surat_digunakan,
+            @Field("jml_surat_sah") String jml_surat_sah,
+            @Field("jml_surat_tdk_sah") String jml_surat_tdk_sah,
+            @Field("jml_surat_sah_dan_tdk_sah") String jml_surat_sah_dan_tdk_sah,
+            @Field("id_calon") String id_calon,
+            @Field("suara_calon") String suara_calon
     );
 }

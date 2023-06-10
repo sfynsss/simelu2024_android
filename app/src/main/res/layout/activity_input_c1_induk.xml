@@ -112,6 +112,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -142,6 +143,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -188,6 +190,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -218,6 +221,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -282,6 +286,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -312,6 +317,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -357,6 +363,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -386,6 +393,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -449,6 +457,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>
@@ -479,6 +488,7 @@
                                 android:fontFamily="@font/poppins_regular"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
+                                android:hint="00"
                                 android:textAlignment="center"
                                 android:textColor="#000000" />
                         </LinearLayout>

@@ -17,7 +17,7 @@ public class TabulasiFragment extends Fragment {
 
     FilterWilayah FilterWilayah;
     AppCompatImageView filter;
-    CardView data_induk;
+    CardView data_induk, presiden;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,6 +28,7 @@ public class TabulasiFragment extends Fragment {
         FilterWilayah = new FilterWilayah(getContext(), getActivity());
         filter = view.findViewById(R.id.filter);
         data_induk = view.findViewById(R.id.data_induk);
+        presiden = view.findViewById(R.id.presiden);
 
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,13 @@ public class TabulasiFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), InputC1Induk.class));
+            }
+        });
+
+        presiden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), InputC1Presiden.class));
             }
         });
 

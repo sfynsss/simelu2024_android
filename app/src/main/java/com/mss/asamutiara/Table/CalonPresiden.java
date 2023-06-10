@@ -3,7 +3,7 @@ package com.mss.asamutiara.Table;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Calon {
+public class CalonPresiden {
 
     @SerializedName("id")
     @Expose
@@ -31,7 +31,7 @@ public class Calon {
     private String dapilKabupatenId;
     @SerializedName("jumlah_suara")
     @Expose
-    private String jumlahSuara;
+    private Integer jumlahSuara;
     @SerializedName("sts_jadi")
     @Expose
     private Integer stsJadi;
@@ -50,6 +50,21 @@ public class Calon {
     @SerializedName("gambar_calon")
     @Expose
     private String gambarCalon;
+    @SerializedName("id_calon")
+    @Expose
+    private Integer idCalon;
+    @SerializedName("provinsi_id")
+    @Expose
+    private String provinsiId;
+    @SerializedName("kabupaten_id")
+    @Expose
+    private String kabupatenId;
+    @SerializedName("desa_id")
+    @Expose
+    private Long desaId;
+    @SerializedName("tps_id")
+    @Expose
+    private Integer tpsId;
 
     public Integer getId() {
         return id;
@@ -115,11 +130,11 @@ public class Calon {
         this.dapilKabupatenId = dapilKabupatenId;
     }
 
-    public String getJumlahSuara() {
+    public Integer getJumlahSuara() {
         return jumlahSuara;
     }
 
-    public void setJumlahSuara(String jumlahSuara) {
+    public void setJumlahSuara(Integer jumlahSuara) {
         this.jumlahSuara = jumlahSuara;
     }
 
@@ -169,6 +184,46 @@ public class Calon {
 
     public void setGambarCalon(String gambarCalon) {
         this.gambarCalon = gambarCalon;
+    }
+
+    public Integer getIdCalon() {
+        return idCalon;
+    }
+
+    public void setIdCalon(Integer idCalon) {
+        this.idCalon = idCalon;
+    }
+
+    public String getProvinsiId() {
+        return provinsiId;
+    }
+
+    public void setProvinsiId(String provinsiId) {
+        this.provinsiId = provinsiId;
+    }
+
+    public String getKabupatenId() {
+        return kabupatenId;
+    }
+
+    public void setKabupatenId(String kabupatenId) {
+        this.kabupatenId = kabupatenId;
+    }
+
+    public Long getDesaId() {
+        return desaId;
+    }
+
+    public void setDesaId(Long desaId) {
+        this.desaId = desaId;
+    }
+
+    public Integer getTpsId() {
+        return tpsId;
+    }
+
+    public void setTpsId(Integer tpsId) {
+        this.tpsId = tpsId;
     }
 
 }

@@ -256,7 +256,6 @@ public class InputC1Induk extends AppCompatActivity {
             @Override
             public void onResponse(Call<BaseResponse<DataInduk>> call, Response<BaseResponse<DataInduk>> response) {
                 if (response.isSuccessful()) {
-                    loaderUi2.dismiss();
                     dpt.setText(response.body().getData().get(0).getDpt().toString());
                     dptb.setText(response.body().getData().get(0).getDPTb().toString());
                     dpk.setText(response.body().getData().get(0).getDpk().toString());
@@ -268,6 +267,7 @@ public class InputC1Induk extends AppCompatActivity {
                     p_dpk.setText(response.body().getData().get(0).getPenggunaDpk().toString());
                     p_dpktb.setText(response.body().getData().get(0).getPENGGUNADPKTb().toString());
                     p_jum.setText(response.body().getData().get(0).getJumPengguna().toString());
+                    loaderUi2.dismiss();
                 } else {
                     loaderUi2.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
@@ -305,6 +305,7 @@ public class InputC1Induk extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     loaderUi.dismiss();
                     Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     loaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);

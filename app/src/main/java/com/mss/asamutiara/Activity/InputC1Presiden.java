@@ -159,7 +159,7 @@ public class InputC1Presiden extends AppCompatActivity {
                         suara_paslon.add(response.body().getData().get(i).getJumlahSuara().toString());
                     }
 
-                    adapterPresiden = new AdapterPresiden(context, activity, id, nomor_urut, nama_paslon, gambar_paslon, suara_paslon, new MyListener() {
+                    adapterPresiden = new AdapterPresiden(context, activity, id_calon, nomor_urut, nama_paslon, gambar_paslon, suara_paslon, new MyListener() {
                         @Override
                         public void addValue(String s, int position) {
                             suara_paslon.set(position, s);
@@ -187,12 +187,12 @@ public class InputC1Presiden extends AppCompatActivity {
         String tmp_id_calon = TextUtils.join(";", id_calon);
         String suara_calon = TextUtils.join(";", suara_paslon);
 
-        jml_surat_kembali = surat_rusak.getText().toString();
-        jml_surat_tdk_digunakan = surat_tdk_guna.getText().toString();
-        jml_surat_digunakan = surat_guna.getText().toString();
+        jml_surat_kembali = !TextUtils.isEmpty(surat_rusak.getText().toString()) ? surat_rusak.getText().toString() : "0";
+        jml_surat_tdk_digunakan = !TextUtils.isEmpty(surat_tdk_guna.getText().toString()) ? surat_tdk_guna.getText().toString() : "0";
+        jml_surat_digunakan = !TextUtils.isEmpty(surat_guna.getText().toString()) ? surat_guna.getText().toString() : "0";
         jml_surat = (Integer.parseInt(jml_surat_kembali) + Integer.parseInt(jml_surat_tdk_digunakan) + Integer.parseInt(jml_surat_digunakan)) + "";
-        jml_surat_sah = surat_sah_parpol.getText().toString();
-        jml_surat_tdk_sah = surat_tdk_sah_parpol.getText().toString();
+        jml_surat_sah = !TextUtils.isEmpty(surat_sah_parpol.getText().toString()) ? surat_sah_parpol.getText().toString() : "0";
+        jml_surat_tdk_sah = !TextUtils.isEmpty(surat_tdk_sah_parpol.getText().toString()) ? surat_tdk_sah_parpol.getText().toString() : "0";
         jml_surat_sah_dan_tdk_sah = (Integer.parseInt(jml_surat_sah) + Integer.parseInt(jml_surat_tdk_sah)) + "";
 
         callSimpanData = api.updateSuaraPresiden(session.getTpsActive(),

@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -48,7 +49,9 @@ public class InputC1Induk extends AppCompatActivity {
     Call<BaseResponse> callSimpanData;
 
     int jum_tot_dpt = 0 , jum_tot_pengguna = 0;
-    String tmp_dpt, tmp_dptb, tmp_dpk, tmp_dpktb, tmp_jum_dp, tmp_p_dpt, tmp_p_dptb, tmp_p_dpk, tmp_p_dpktb, tmp_jum_p_dp;
+    String tmp_dpt = "0", tmp_dptb = "0", tmp_dpk = "0", tmp_dpktb = "0",
+            tmp_jum_dp = "0", tmp_p_dpt = "0", tmp_p_dptb = "0", tmp_p_dpk = "0",
+            tmp_p_dpktb = "0", tmp_jum_p_dp = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -285,17 +288,17 @@ public class InputC1Induk extends AppCompatActivity {
 
     public void insertData() {
         loaderUi.show();
-        tmp_dpt = dpt.getText().toString();
-        tmp_dptb = dptb.getText().toString();
-        tmp_dpk = dpk.getText().toString();
-        tmp_dpktb = dpktb.getText().toString();
-        tmp_jum_dp = jum.getText().toString();
+        tmp_dpt = !TextUtils.isEmpty(dpt.getText().toString()) ? dpt.getText().toString() : "0";
+        tmp_dptb = !TextUtils.isEmpty(dptb.getText().toString()) ? dptb.getText().toString() : "0";
+        tmp_dpk = !TextUtils.isEmpty(dpk.getText().toString()) ? dpk.getText().toString() : "0";
+        tmp_dpktb = !TextUtils.isEmpty(dpktb.getText().toString()) ? dpktb.getText().toString() : "0";
+        tmp_jum_dp = !TextUtils.isEmpty(jum.getText().toString()) ? jum.getText().toString() : "0";
 
-        tmp_p_dpt = p_dpt.getText().toString();
-        tmp_p_dptb = p_dptb.getText().toString();
-        tmp_p_dpk = p_dpk.getText().toString();
-        tmp_p_dpktb = p_dpktb.getText().toString();
-        tmp_jum_p_dp = p_jum.getText().toString();
+        tmp_p_dpt = !TextUtils.isEmpty(p_dpt.getText().toString()) ? p_dpt.getText().toString() : "0";
+        tmp_p_dptb = !TextUtils.isEmpty(p_dptb.getText().toString()) ? p_dptb.getText().toString() : "0";
+        tmp_p_dpk = !TextUtils.isEmpty(p_dpk.getText().toString()) ? p_dpk.getText().toString() : "0";
+        tmp_p_dpktb = !TextUtils.isEmpty(p_dpktb.getText().toString()) ? p_dpktb.getText().toString() : "0";
+        tmp_jum_p_dp = !TextUtils.isEmpty(p_jum.getText().toString()) ? p_jum.getText().toString() : "0";
 
         callSimpanData = api.storeDataInduk(session.getTpsActive(), tmp_dpt, tmp_dptb, tmp_dpk,
                 tmp_dpktb, tmp_jum_dp, tmp_p_dpt, tmp_p_dptb, tmp_p_dpk,tmp_p_dpktb, tmp_jum_p_dp);

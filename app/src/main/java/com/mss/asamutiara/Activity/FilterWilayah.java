@@ -115,7 +115,7 @@ public class FilterWilayah {
                 session.setWilayah(tmp_provinsi_id+"", tmp_kabupaten_id+"",
                         list_kecamatan_id.get(filter_kecamatan.getSelectedItemPosition())+"",
                         list_desa_id.get(filter_desa.getSelectedItemPosition())+"",
-                        list_tps_id.get(filter_desa.getSelectedItemPosition())+"");
+                        list_tps_id.get(filter_tps.getSelectedItemPosition())+"");
                 dialog.dismiss();
             }
         });
@@ -127,11 +127,15 @@ public class FilterWilayah {
     }
 
     public void show() {
-        dialog.show();
+        if (!activity.isFinishing() && dialog != null) {
+            dialog.show();
+        }
     }
 
     public void dismiss() {
-        dialog.dismiss();
+        if (!activity.isFinishing() && dialog != null) {
+            dialog.dismiss();
+        }
     }
 
     public void option() {

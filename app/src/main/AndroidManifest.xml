@@ -27,6 +27,15 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".Activity.LogistikActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.InputC1Caleg"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.InputC1Dpr"
+            android:exported="true" />
+        <activity
             android:name=".Activity.InputC1Presiden"
             android:exported="true" />
         <activity

@@ -2,6 +2,7 @@ package com.mss.asamutiara.Api;
 
 import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Response.UserResponse;
+import com.mss.asamutiara.Table.Caleg;
 import com.mss.asamutiara.Table.Calon;
 import com.mss.asamutiara.Table.CalonPresiden;
 import com.mss.asamutiara.Table.CekSession;
@@ -11,6 +12,7 @@ import com.mss.asamutiara.Table.Desa;
 import com.mss.asamutiara.Table.Hierarki;
 import com.mss.asamutiara.Table.Kabupaten;
 import com.mss.asamutiara.Table.Kecamatan;
+import com.mss.asamutiara.Table.Partai;
 import com.mss.asamutiara.Table.Relawan;
 import com.mss.asamutiara.Table.Suara;
 import com.mss.asamutiara.Table.Tps;
@@ -164,5 +166,49 @@ public interface Api {
             @Field("jml_surat_sah_dan_tdk_sah") String jml_surat_sah_dan_tdk_sah,
             @Field("id_calon") String id_calon,
             @Field("suara_calon") String suara_calon
+    );
+
+    @FormUrlEncoded
+    @POST("getPartai")
+    Call<BaseResponse<Partai>> getPartai(
+            @Field("tps_id") String tps_id,
+            @Field("kategori_id") String kategori_id
+    );
+
+    @FormUrlEncoded
+    @POST("storeDataIndukDpr")
+    Call<BaseResponse> storeDataIndukDpr(
+            @Field("tps_id") String tps_id,
+            @Field("kategori") String kd_desa,
+
+            @Field("jml_surat") String jml_surat,
+            @Field("jml_surat_kembali") String jml_surat_kembali,
+            @Field("jml_surat_tdk_digunakan") String jml_surat_tdk_digunakan,
+            @Field("jml_surat_digunakan") String jml_surat_digunakan,
+            @Field("jml_surat_sah") String jml_surat_sah,
+            @Field("jml_surat_tdk_sah") String jml_surat_tdk_sah,
+            @Field("jml_surat_sah_dan_tdk_sah") String jml_surat_sah_dan_tdk_sah
+    );
+
+    @FormUrlEncoded
+    @POST("getCaleg")
+    Call<BaseResponse<Caleg>> getCaleg(
+            @Field("kategori_id") String kategori_id,
+            @Field("wilayah") String wilayah,
+            @Field("tps_id") String tps_id,
+            @Field("partai_id") String partai_id
+    );
+
+    @FormUrlEncoded
+    @POST("insertSuaraCaleg")
+    Call<BaseResponse> insertSuaraCaleg(
+            @Field("kategori_id") String kategori_id,
+            @Field("tps_id") String tps_id,
+            @Field("partai_id") String partai_id,
+            @Field("suara_partai") String suara_partai,
+            @Field("calon_id") String calon_id,
+            @Field("suara_calon") String suara_calon,
+            @Field("wilayah") String wilayah,
+            @Field("desa_id") String desa_id
     );
 }

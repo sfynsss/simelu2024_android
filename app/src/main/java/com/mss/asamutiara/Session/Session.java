@@ -35,16 +35,8 @@ public class Session {
         editor.commit();
     }
 
-    public String getLat() {
-        return preferences.getString("lat", "-8.151507878490508");
-    }
-
-    public String getLng() {
-        return preferences.getString("lng", "113.7152087383908");
-    }
-
     public String getBaseUrl() {
-        return preferences.getString("baseUrl", "192.168.1.19:8000");
+        return preferences.getString("baseUrl", "192.168.1.9:8000");
     }
 
     public boolean getUserLoggedIn() {
@@ -106,6 +98,22 @@ public class Session {
         editor.putString("filter_desa", desa);
         editor.putString("filter_tps", tps);
         editor.commit();
+    }
+
+    public String getProvinsiActive() {
+        return preferences.getString("filter_provinsi", "");
+    }
+
+    public String getKabupatenActive() {
+        return preferences.getString("filter_kabupaten", "");
+    }
+
+    public String getKecamatanActive() {
+        return preferences.getString("filter_kecamatan", "");
+    }
+
+    public String getDesaActive() {
+        return preferences.getString("filter_desa", "");
     }
 
     public String getTpsActive() {

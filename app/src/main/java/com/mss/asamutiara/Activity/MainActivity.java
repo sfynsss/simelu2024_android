@@ -6,6 +6,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                             response.body().getData().get(0).getDesa(),
                             response.body().getData().get(0).getKecamatan(),
                             response.body().getData().get(0).getKabupaten(),
-                            response.body().getData().get(0).getProvinsiId().toString(),
+                            !TextUtils.isEmpty(response.body().getData().get(0).getProvinsiId()) ? response.body().getData().get(0).getProvinsiId() : "",
                             response.body().getData().get(0).getProvinsi());
                 } else {
                     ApiError apiError = ErrorUtils.parseError(response);

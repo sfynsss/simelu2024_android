@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class BerandaFragment extends Fragment {
 
     SwipeRefreshLayout swipeRefreshLayout;
-    LinearLayout btn_relawan_anggota;
+    LinearLayout btn_relawan_anggota, btn_logistik;
 
     TextView nama_pengguna, nama_hierarki, nama_calon, target, perolehan, kurang;
     TextView judul_button, detail_judul_button;
@@ -57,6 +57,7 @@ public class BerandaFragment extends Fragment {
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         getUser();
         btn_relawan_anggota = (LinearLayout) view.findViewById(R.id.btn_relawan_anggota);
+        btn_logistik = (LinearLayout) view.findViewById(R.id.btn_logistik);
         img_profil = (ImageView) view.findViewById(R.id.img_profil);
 
         nama_pengguna = view.findViewById(R.id.nama_pengguna);
@@ -89,6 +90,13 @@ public class BerandaFragment extends Fragment {
                 } else {
                     startActivity(new Intent(getContext(), DataRelawanActivity.class));
                 }
+            }
+        });
+
+        btn_logistik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), DataLogistikActivity.class));
             }
         });
 

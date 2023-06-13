@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -62,7 +61,7 @@ public class DataRelawanActivity extends AppCompatActivity {
         btn_tambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DataRelawanActivity.this, input_data_relawan.class);
+                Intent intent = new Intent(DataRelawanActivity.this, InputDataRelawan.class);
                 startActivityForResult(intent, 0);
             }
         });

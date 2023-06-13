@@ -6,7 +6,6 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -35,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class input_data_relawan extends AppCompatActivity {
+public class InputDataRelawan extends AppCompatActivity {
 
     Session session;
     LoaderUi LoaderUi;
@@ -162,14 +161,14 @@ public class input_data_relawan extends AppCompatActivity {
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<CekSession>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -206,20 +205,20 @@ public class input_data_relawan extends AppCompatActivity {
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.isSuccessful()) {
                     LoaderUi.dismiss();
-                    Toast.makeText(input_data_relawan.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     setResult(1);
                     finish();
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -242,20 +241,20 @@ public class input_data_relawan extends AppCompatActivity {
                     }
 
                     //Ini buat ngisi Spinner
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_hierarki);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InputDataRelawan.this, R.layout.spinner_layout, list_hierarki);
                     arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                     hierarki.setAdapter(arrayAdapter);
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Hierarki>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -293,20 +292,20 @@ public class input_data_relawan extends AppCompatActivity {
                     }
 
                     //Ini buat ngisi Spinner
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_kabupaten);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InputDataRelawan.this, R.layout.spinner_layout, list_kabupaten);
                     arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                     kabupaten.setAdapter(arrayAdapter);
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Kabupaten>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -330,20 +329,20 @@ public class input_data_relawan extends AppCompatActivity {
                     }
 
                     //Ini buat ngisi Spinner
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_dapil_kabupaten);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InputDataRelawan.this, R.layout.spinner_layout, list_dapil_kabupaten);
                     arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                     dapil_kabupaten.setAdapter(arrayAdapter);
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<DapilKabupaten>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -367,20 +366,20 @@ public class input_data_relawan extends AppCompatActivity {
                     }
 
                     //Ini buat ngisi Spinner
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_kecamatan);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InputDataRelawan.this, R.layout.spinner_layout, list_kecamatan);
                     arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                     kecamatan.setAdapter(arrayAdapter);
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Kecamatan>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -404,20 +403,20 @@ public class input_data_relawan extends AppCompatActivity {
                     }
 
                     //Ini buat ngisi Spinner
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_desa);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InputDataRelawan.this, R.layout.spinner_layout, list_desa);
                     arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                     desa.setAdapter(arrayAdapter);
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Desa>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -441,20 +440,20 @@ public class input_data_relawan extends AppCompatActivity {
                     }
 
                     //Ini buat ngisi Spinner
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(input_data_relawan.this, R.layout.spinner_layout, list_tps);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(InputDataRelawan.this, R.layout.spinner_layout, list_tps);
                     arrayAdapter.setDropDownViewResource(R.layout.spinner_layout);
                     tps.setAdapter(arrayAdapter);
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
-                    Toast.makeText(input_data_relawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(InputDataRelawan.this, apiError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Tps>> call, Throwable t) {
                 LoaderUi.dismiss();
-                Toast.makeText(input_data_relawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(InputDataRelawan.this, "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

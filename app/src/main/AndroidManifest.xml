@@ -27,7 +27,7 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".Activity.LogistikActivity"
+            android:name=".Activity.PenyaluranLogistikActivity"
             android:exported="true" />
         <activity
             android:name=".Activity.InputC1Caleg"
@@ -48,7 +48,7 @@
             android:name=".Activity.InputC1Induk"
             android:exported="true" />
         <activity
-            android:name=".Activity.input_data_relawan"
+            android:name=".Activity.InputDataRelawan"
             android:exported="true" />
         <activity
             android:name=".Activity.DataRelawanActivity"
@@ -84,6 +84,9 @@
             android:exported="true" />
         <activity
             android:name=".Activity.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DataLogistikActivity"
             android:exported="true" />
     </application>
 

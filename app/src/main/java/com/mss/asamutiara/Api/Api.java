@@ -12,6 +12,7 @@ import com.mss.asamutiara.Table.Desa;
 import com.mss.asamutiara.Table.Hierarki;
 import com.mss.asamutiara.Table.Kabupaten;
 import com.mss.asamutiara.Table.Kecamatan;
+import com.mss.asamutiara.Table.MasterLogistik;
 import com.mss.asamutiara.Table.Partai;
 import com.mss.asamutiara.Table.Relawan;
 import com.mss.asamutiara.Table.Suara;
@@ -210,5 +211,20 @@ public interface Api {
             @Field("suara_calon") String suara_calon,
             @Field("wilayah") String wilayah,
             @Field("desa_id") String desa_id
+    );
+
+    @GET("getDataLogistik")
+    Call<BaseResponse<MasterLogistik>> getDataLogistik();
+
+    @GET("getRelawanPenerima")
+    Call<BaseResponse<Relawan>> getRelawanPenerima();
+
+    @FormUrlEncoded
+    @POST("insertDetailLogistik")
+    Call<BaseResponse> insertDetailLogistik(
+            @Field("id_master") String id_master,
+            @Field("id_penyalur") String id_penyalur,
+            @Field("penerima") String penerima,
+            @Field("foto_detail") String foto_detail
     );
 }

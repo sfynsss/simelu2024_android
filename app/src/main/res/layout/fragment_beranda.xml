@@ -32,33 +32,12 @@
 
                     <ImageView
                         android:id="@+id/img_logo"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="70dp"
+                        android:layout_height="80dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="30dp"
                         android:background="@drawable/icon_putih"></ImageView>
 
-                    <TextView
-                        android:id="@+id/txt_welcome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/img_logo"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="Selamat datang di"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"></TextView>
-
-                    <TextView
-                        android:id="@+id/txt_soebandi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/txt_welcome"
-                        android:layout_centerHorizontal="true"
-                        android:text="E-Presensi DigiOffice"
-                        android:textColor="#FFF"
-                        android:textSize="14sp"
-                        android:textStyle="bold"></TextView>
                 </RelativeLayout>
 
                 <androidx.cardview.widget.CardView
@@ -81,6 +60,8 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
                             android:orientation="vertical">
                             <ImageView
                                 android:id="@+id/img_profil"
@@ -123,7 +104,7 @@
                                 android:layout_toRightOf="@+id/img_profil"
                                 android:fontFamily="@font/poppins_medium"
                                 android:textColor="@color/green_dark"
-                                android:textSize="14sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"></TextView>
 
                             <TextView
@@ -134,7 +115,7 @@
                                 android:layout_marginLeft="8dp"
                                 android:layout_toRightOf="@+id/img_profil"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"></TextView>
+                                android:textSize="14sp"></TextView>
 
                             <TextView
                                 android:id="@+id/nama_calon"
@@ -143,7 +124,7 @@
                                 android:layout_below="@+id/nip_pengguna"
                                 android:layout_marginLeft="8dp"
                                 android:layout_toRightOf="@+id/img_profil"
-                                android:textSize="12sp"></TextView>
+                                android:textSize="14sp"></TextView>
                         </LinearLayout>
 
                         <LinearLayout

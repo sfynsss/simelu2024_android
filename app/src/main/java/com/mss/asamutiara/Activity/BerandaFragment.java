@@ -3,6 +3,7 @@ package com.mss.asamutiara.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -85,10 +86,15 @@ public class BerandaFragment extends Fragment {
         btn_relawan_anggota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent;
                 if (tmp_hierarki == 6) {
-                    startActivity(new Intent(getContext(), DataPengumpulanSuaraActivity.class));
+                    intent = new Intent(getContext(), DataPengumpulanSuaraActivity.class);
+                    intent.putExtra("relawan_id", "");
+                    startActivityForResult(intent, 0);
                 } else {
-                    startActivity(new Intent(getContext(), DataRelawanActivity.class));
+                    intent = new Intent(getContext(), DataRelawanActivity.class);
+                    intent.putExtra("relawan_id", "");
+                    startActivityForResult(intent, 0);
                 }
             }
         });
@@ -148,5 +154,15 @@ public class BerandaFragment extends Fragment {
                 Toast.makeText(getContext(), "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == 1) {
+                getUser();
+            }
+        }
     }
 }

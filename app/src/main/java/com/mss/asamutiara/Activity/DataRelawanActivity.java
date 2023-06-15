@@ -36,6 +36,7 @@ public class DataRelawanActivity extends AppCompatActivity {
 
     ArrayList<String> id = new ArrayList<>();
     ArrayList<String> hierarki = new ArrayList<>();
+    ArrayList<String> hierarki_id = new ArrayList<>();
     ArrayList<String> nama = new ArrayList<>();
     ArrayList<String> no_telp = new ArrayList<>();
     ArrayList<String> target = new ArrayList<>();
@@ -45,6 +46,7 @@ public class DataRelawanActivity extends AppCompatActivity {
 
     AdapterRelawan adapterRelawan;
     ListView list_relawan;
+    String relawan_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +68,17 @@ public class DataRelawanActivity extends AppCompatActivity {
             }
         });
 
+        relawan_id = getIntent().getStringExtra("relawan_id");
+        if (!relawan_id.equals("")) {
+            btn_tambah.setVisibility(View.GONE);
+        }
+
         loaderUi2.show();
         getDataRelawan();
     }
 
     public void getDataRelawan() {
-        getRelawan = api.getRelawan();
+        getRelawan = api.getRelawan(relawan_id);
         getRelawan.enqueue(new Callback<BaseResponse<Relawan>>() {
             @Override
             public void onResponse(Call<BaseResponse<Relawan>> call, Response<BaseResponse<Relawan>> response) {
@@ -79,6 +86,7 @@ public class DataRelawanActivity extends AppCompatActivity {
                     loaderUi2.dismiss();
                     id.clear();
                     hierarki.clear();
+                    hierarki_id.clear();
                     nama.clear();
                     no_telp.clear();
                     target.clear();
@@ -90,6 +98,7 @@ public class DataRelawanActivity extends AppCompatActivity {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         id.add(response.body().getData().get(i).getId().toString());
                         hierarki.add(response.body().getData().get(i).getNamaHierarki());
+                        hierarki_id.add(response.body().getData().get(i).getHierarkiId().toString());
                         nama.add(response.body().getData().get(i).getNama());
                         no_telp.add(response.body().getData().get(i).getNoTelp());
                         target.add(response.body().getData().get(i).getTarget().toString());
@@ -103,7 +112,20 @@ public class DataRelawanActivity extends AppCompatActivity {
                     }
 
                     adapterRelawan = new AdapterRelawan(DataRelawanActivity.this, id, hierarki, nama,
-                            no_telp, target, persentase, terpenuhi, kekurangan_target);
+                            no_telp, target, persentase, terpenuhi, kekurangan_target, new AdapterRelawan.OnEditLocationListener() {
+                        @Override
+                        public void onClickAdapter(int position) {
+                            if (!hierarki_id.get(position).equals("6")) {
+                                Intent intent = new Intent(DataRelawanActivity.this, DataRelawanActivity.class);
+                                intent.putExtra("relawan_id", id.get(position));
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(DataRelawanActivity.this, DataPengumpulanSuaraActivity.class);
+                                intent.putExtra("relawan_id", id.get(position));
+                                startActivity(intent);
+                            }
+                        }
+                    });
                     adapterRelawan.notifyDataSetChanged();
                     list_relawan.setAdapter(adapterRelawan);
                 } else {

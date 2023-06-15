@@ -88,11 +88,17 @@ public interface Api {
     @GET("cekSession")
     Call<BaseResponse<CekSession>> cekSession();
 
-    @GET("getRelawan")
-    Call<BaseResponse<Relawan>> getRelawan();
+    @FormUrlEncoded
+    @POST("getRelawan")
+    Call<BaseResponse<Relawan>> getRelawan(
+            @Field("relawan_id") String relawan_id
+    );
 
-    @GET("getSuara")
-    Call<BaseResponse<Suara>> getSuara();
+    @FormUrlEncoded
+    @POST("getSuara")
+    Call<BaseResponse<Suara>> getSuara(
+            @Field("relawan_id") String relawan_id
+    );
 
     @FormUrlEncoded
     @POST("createRelawan")
@@ -226,5 +232,11 @@ public interface Api {
             @Field("id_penyalur") String id_penyalur,
             @Field("penerima") String penerima,
             @Field("foto_detail") String foto_detail
+    );
+
+    @FormUrlEncoded
+    @POST("ubahPassword")
+    Call<BaseResponse> ubahPassword(
+            @Field("password") String password
     );
 }

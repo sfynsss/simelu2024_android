@@ -27,6 +27,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".Activity.EditProfileActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.PenyaluranLogistikActivity"
             android:exported="true" />
         <activity
@@ -63,9 +66,6 @@
             android:exported="true" />
         <activity
             android:name=".Activity.AlertBerhasilActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.EditProfilActivity"
             android:exported="true" />
         <activity
             android:name=".Activity.SplashActivity"

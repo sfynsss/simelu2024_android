@@ -3,12 +3,11 @@ package com.mss.asamutiara.Activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -33,11 +32,13 @@ public class AdapterRelawan extends ArrayAdapter<String> {
     ArrayList<String> persentase = new ArrayList<>();
     ArrayList<String> terpenuhi = new ArrayList<>();
     ArrayList<String> kekurangan_target = new ArrayList<>();
+    OnEditLocationListener btn_detail;
 
     public AdapterRelawan(Activity context, ArrayList<String> id, ArrayList<String> hierarki,
                           ArrayList<String> nama, ArrayList<String> no_telp,
                           ArrayList<String> target, ArrayList<String> persentase,
-                          ArrayList<String> terpenuhi, ArrayList<String> kekurangan_target) {
+                          ArrayList<String> terpenuhi, ArrayList<String> kekurangan_target,
+                          OnEditLocationListener btn_detail) {
         super(context, R.layout.adapter_relawan, id);
 
         this.context = context;
@@ -50,6 +51,7 @@ public class AdapterRelawan extends ArrayAdapter<String> {
         this.persentase = persentase;
         this.terpenuhi = terpenuhi;
         this.kekurangan_target = kekurangan_target;
+        this.btn_detail = btn_detail;
     }
 
     @SuppressLint("ResourceAsColor")
@@ -73,6 +75,14 @@ public class AdapterRelawan extends ArrayAdapter<String> {
         viewHolder.target.setText(target.get(position));
         viewHolder.terpenuhi.setText(terpenuhi.get(position));
         viewHolder.kekurangan_target.setText(kekurangan_target.get(position));
+        viewHolder.detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (btn_detail != null) {
+                    btn_detail.onClickAdapter(position);
+                }
+            }
+        });
 
         return v;
     }
@@ -80,6 +90,7 @@ public class AdapterRelawan extends ArrayAdapter<String> {
     class ViewHolder{
         TextView hierarki, nama, no_telp;
         AppCompatButton persentase, target, terpenuhi, kekurangan_target;
+        ImageView detail;
         ViewHolder(View view){
             hierarki = view.findViewById(R.id.hierarki);
             nama = view.findViewById(R.id.nama);
@@ -88,12 +99,17 @@ public class AdapterRelawan extends ArrayAdapter<String> {
             target = view.findViewById(R.id.target);
             terpenuhi = view.findViewById(R.id.terpenuhi);
             kekurangan_target = view.findViewById(R.id.kekurangan_target);
+            detail = view.findViewById(R.id.detail);
         }
     }
 
     @Override
     public int getPosition(String item) {
         return super.getPosition(item);
+    }
+
+    public interface OnEditLocationListener {
+        void onClickAdapter(int position);
     }
 
 }

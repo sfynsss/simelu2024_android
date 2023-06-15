@@ -42,6 +42,8 @@ public class DataPengumpulanSuaraActivity extends AppCompatActivity {
     ArrayList<String> nama = new ArrayList<>();
     ArrayList<String> no_telp = new ArrayList<>();
 
+    String relawan_id = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +64,16 @@ public class DataPengumpulanSuaraActivity extends AppCompatActivity {
             }
         });
 
-
+        relawan_id = getIntent().getStringExtra("relawan_id");
+        if (!relawan_id.equals("")) {
+            btn_tambah.setVisibility(View.GONE);
+        }
         getDataSuara();
     }
 
     public void getDataSuara() {
         loaderUi2.show();
-        callSuara = api.getSuara();
+        callSuara = api.getSuara(relawan_id);
         callSuara.enqueue(new Callback<BaseResponse<Suara>>() {
             @Override
             public void onResponse(Call<BaseResponse<Suara>> call, Response<BaseResponse<Suara>> response) {

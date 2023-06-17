@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg_header"
+        android:background="@drawable/bg_header2"
         android:gravity="center_vertical">
 
         <TextView
@@ -35,7 +35,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="#ffffff"
         android:padding="5dp">
 
@@ -64,6 +64,16 @@
                 android:orientation="vertical"
                 android:visibility="visible">
 
+                <TextView
+                    android:id="@+id/title_tps_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/orange_primary"
+                    android:layout_gravity="center"
+                    />
                 <LinearLayout
                     android:id="@+id/data_pemilih"
                     android:layout_width="match_parent"

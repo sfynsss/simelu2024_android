@@ -10,7 +10,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg_header"
+        android:background="@drawable/bg_header2"
         android:gravity="center_vertical">
 
         <TextView
@@ -46,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"

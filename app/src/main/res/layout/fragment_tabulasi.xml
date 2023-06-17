@@ -10,17 +10,18 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg_header"
+        android:background="@drawable/bg_header2"
         android:gravity="center_vertical">
+
         <TextView
+            android:id="@+id/title_tabulasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Tabulasi Suara"
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="21sp"
-            android:textColor="@color/white">
-        </TextView>
+            android:textStyle="bold"></TextView>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/filter"

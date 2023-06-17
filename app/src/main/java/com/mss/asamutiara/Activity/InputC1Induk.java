@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mss.asamutiara.Api.Api;
@@ -35,7 +36,6 @@ public class InputC1Induk extends AppCompatActivity {
     EditText p_dpt, p_dptb, p_dpk, p_dpktb, p_jum;
     AppCompatButton btn_simpan;
     RelativeLayout refresh;
-    AppCompatImageView filter;
 
     Context context;
     Activity activity;
@@ -47,6 +47,9 @@ public class InputC1Induk extends AppCompatActivity {
     Api api;
     Call<BaseResponse<DataInduk>> callDataInduk;
     Call<BaseResponse> callSimpanData;
+
+    AppCompatImageView filter;
+    TextView title_tps_active;
 
     int jum_tot_dpt = 0 , jum_tot_pengguna = 0;
     String tmp_dpt = "0", tmp_dptb = "0", tmp_dpk = "0", tmp_dpktb = "0",
@@ -80,14 +83,29 @@ public class InputC1Induk extends AppCompatActivity {
 
         btn_simpan = findViewById(R.id.simpan_data_induk);
         refresh = findViewById(R.id.refresh);
+        title_tps_active = findViewById(R.id.title_tps_active);
         filter = findViewById(R.id.filter);
         filter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                filterWilayah = new FilterWilayah(context, activity);
+                filterWilayah = new FilterWilayah(context, activity, new FilterWilayah.OnEditLocationListener() {
+                    @Override
+                    public void onClickAdapter(String tps_id, String tps) {
+                        if (!session.getNamaTpsActive().equals("")) {
+                            title_tps_active.setText(session.getNamaTpsActive());
+                        } else {
+                            title_tps_active.setText(tps);
+                        }
+                        getData();
+                    }
+                });
                 filterWilayah.show();
             }
         });
+
+        if (!session.getNamaTpsActive().equals("")) {
+            title_tps_active.setText(session.getNamaTpsActive());
+        }
 
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override

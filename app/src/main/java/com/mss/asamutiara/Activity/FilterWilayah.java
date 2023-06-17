@@ -76,7 +76,9 @@ public class FilterWilayah {
     String tmp_desa_id = "";
     String tmp_tps_id = "";
 
-    public FilterWilayah(Context context, Activity activity) {
+    private OnEditLocationListener listener_terapkan;
+
+    public FilterWilayah(Context context, Activity activity, OnEditLocationListener listener_terapkan) {
         session = new Session(context);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
         loaderUi2 = new LoaderUi2(context, activity);
@@ -101,6 +103,7 @@ public class FilterWilayah {
         filter_tps = v.findViewById(R.id.filter_tps);
 
         filter_provinsi.setText(session.getProvinsi());
+        this.listener_terapkan = listener_terapkan;
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,11 +115,15 @@ public class FilterWilayah {
         terapkan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                session.setWilayah(tmp_provinsi_id+"", tmp_kabupaten_id+"",
-                        list_kecamatan_id.get(filter_kecamatan.getSelectedItemPosition())+"",
-                        list_desa_id.get(filter_desa.getSelectedItemPosition())+"",
-                        list_tps_id.get(filter_tps.getSelectedItemPosition())+"");
-                dialog.dismiss();
+                if (listener_terapkan != null) {
+                    session.setWilayah(tmp_provinsi_id+"", tmp_kabupaten_id+"",
+                            list_kecamatan_id.get(filter_kecamatan.getSelectedItemPosition())+"",
+                            list_desa_id.get(filter_desa.getSelectedItemPosition())+"",
+                            list_tps_id.get(filter_tps.getSelectedItemPosition())+"",
+                            list_tps.get(filter_tps.getSelectedItemPosition())+"");
+                    dialog.dismiss();
+                    listener_terapkan.onClickAdapter(list_tps_id.get(filter_tps.getSelectedItemPosition())+"", list_tps.get(filter_tps.getSelectedItemPosition())+"");
+                }
             }
         });
 
@@ -589,4 +596,7 @@ public class FilterWilayah {
         });
     }
 
+    public interface OnEditLocationListener {
+        void onClickAdapter(String tps_id, String tps);
+    }
 }

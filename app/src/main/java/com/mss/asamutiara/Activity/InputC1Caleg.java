@@ -2,6 +2,7 @@ package com.mss.asamutiara.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -65,6 +66,10 @@ public class InputC1Caleg extends AppCompatActivity {
     private ArrayList<String> nama_caleg = new ArrayList<String>();
     private ArrayList<String> suara_caleg = new ArrayList<String>();
 
+    AppCompatImageView filter;
+    TextView title_tps_active;
+    FilterWilayah filterWilayah;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +91,29 @@ public class InputC1Caleg extends AppCompatActivity {
         kontainer = findViewById(R.id.kontainer);
         btn_simpan = findViewById(R.id.btn_simpan);
         refresh = findViewById(R.id.refresh);
+        title_tps_active = findViewById(R.id.title_tps_active);
+        filter = findViewById(R.id.filter);
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterWilayah = new FilterWilayah(context, activity, new FilterWilayah.OnEditLocationListener() {
+                    @Override
+                    public void onClickAdapter(String tps_id, String tps) {
+                        if (!session.getNamaTpsActive().equals("")) {
+                            title_tps_active.setText(session.getNamaTpsActive());
+                        } else {
+                            title_tps_active.setText(tps);
+                        }
+                        getCaleg();
+                    }
+                });
+                filterWilayah.show();
+            }
+        });
+
+        if (!session.getNamaTpsActive().equals("")) {
+            title_tps_active.setText(session.getNamaTpsActive());
+        }
 
         nama_partai.setText(getIntent().getStringExtra("partai"));
         RequestOptions requestOptions = new RequestOptions();

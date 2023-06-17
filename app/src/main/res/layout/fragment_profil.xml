@@ -11,7 +11,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg_header"
+        android:background="@drawable/bg_header2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -41,7 +41,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="18dp"
-        android:background="@drawable/bg_green_round">
+        android:background="@drawable/bg_yellow_round">
 
         <ImageView
             android:id="@+id/ic_edit"
@@ -59,7 +59,7 @@
             android:layout_marginLeft="16dp"
             android:layout_toRightOf="@+id/ic_edit"
             android:text="Ubah Data Pengguna"
-            android:textColor="@color/white"
+            android:textColor="@color/orange_secondary"
             android:textSize="16sp"
             android:textStyle="bold"></TextView>
 

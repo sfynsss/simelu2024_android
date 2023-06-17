@@ -26,7 +26,7 @@
                     android:id="@+id/ly_header"
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
-                    android:background="@drawable/dashboard_bg_header"
+                    android:background="@drawable/dashboard_bg_header2"
                     android:orientation="vertical"
                     android:paddingLeft="20dp">
 
@@ -36,14 +36,14 @@
                         android:layout_height="80dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="30dp"
-                        android:background="@drawable/icon_putih"></ImageView>
+                        android:background="@drawable/icon_white"></ImageView>
 
                 </RelativeLayout>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/section"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="-50dp"
                     app:cardCornerRadius="10dp"
@@ -51,7 +51,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:paddingHorizontal="10dp"
                         android:weightSum="10">
@@ -60,9 +60,10 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
+                            android:orientation="vertical"
                             android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:orientation="vertical">
+                            android:paddingBottom="5dp">
+
                             <ImageView
                                 android:id="@+id/img_profil"
                                 android:layout_width="match_parent"
@@ -103,7 +104,7 @@
                                 android:layout_marginLeft="8dp"
                                 android:layout_toRightOf="@+id/img_profil"
                                 android:fontFamily="@font/poppins_medium"
-                                android:textColor="@color/green_dark"
+                                android:textColor="@color/orange_primary"
                                 android:textSize="16sp"
                                 android:textStyle="bold"></TextView>
 
@@ -145,7 +146,7 @@
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="40dp"
+                                android:layout_height="35dp"
                                 android:background="@drawable/bt_outline_secondary">
 
                                 <TextView
@@ -155,7 +156,7 @@
                                     android:layout_centerInParent="true"
                                     android:fontFamily="@font/poppins_medium"
                                     android:text=""
-                                    android:textColor="@color/green_dark"
+                                    android:textColor="@color/orange_primary"
                                     android:textStyle="bold" />
                             </RelativeLayout>
 

@@ -21,7 +21,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/green_dark">
+        android:textColor="@color/orange_dark">
     </TextView>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
             android:text=""
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/green_dark">
+            android:textColor="@color/orange_dark">
         </TextView>
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
             android:text="Input Data Berhasil"
             android:textSize="18sp"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/green_dark">
+            android:textColor="@color/orange_dark">
         </TextView>
     </LinearLayout>
 

@@ -3,6 +3,7 @@ package com.mss.asamutiara.Activity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,6 +68,10 @@ public class InputC1Dpr extends AppCompatActivity {
             jml_surat_digunakan, jml_surat_sah, jml_surat_tdk_sah,
             jml_surat_sah_dan_tdk_sah;
 
+    AppCompatImageView filter;
+    TextView title_tps_active;
+    FilterWilayah filterWilayah;
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +97,30 @@ public class InputC1Dpr extends AppCompatActivity {
 
         surat_sah_parpol = (EditText) findViewById(R.id.suara_sah_parpol);
         surat_tdk_sah_parpol = (EditText) findViewById(R.id.suara_tidak_sah);
+
+        title_tps_active = findViewById(R.id.title_tps_active);
+        filter = findViewById(R.id.filter);
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterWilayah = new FilterWilayah(context, activity, new FilterWilayah.OnEditLocationListener() {
+                    @Override
+                    public void onClickAdapter(String tps_id, String tps) {
+                        if (!session.getNamaTpsActive().equals("")) {
+                            title_tps_active.setText(session.getNamaTpsActive());
+                        } else {
+                            title_tps_active.setText(tps);
+                        }
+                        getData();
+                    }
+                });
+                filterWilayah.show();
+            }
+        });
+
+        if (!session.getNamaTpsActive().equals("")) {
+            title_tps_active.setText(session.getNamaTpsActive());
+        }
 
         tmp_kategori = getIntent().getStringExtra("kategori");
 

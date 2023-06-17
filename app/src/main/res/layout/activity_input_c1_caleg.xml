@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg_header"
+        android:background="@drawable/bg_header2"
         android:gravity="center_vertical">
 
         <TextView
@@ -34,10 +34,21 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/nama_partai"
+        android:id="@+id/title_tps_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/orange_primary"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/nama_partai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:text="PKS"
         android:textSize="20dp"

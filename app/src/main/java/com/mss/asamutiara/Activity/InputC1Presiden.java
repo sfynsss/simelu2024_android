@@ -3,6 +3,7 @@ package com.mss.asamutiara.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mss.asamutiara.Api.Api;
@@ -51,6 +53,8 @@ public class InputC1Presiden extends AppCompatActivity {
 
     RecyclerView recycle_calon;
     AdapterPresiden adapterPresiden;
+    AppCompatImageView filter;
+    FilterWilayah filterWilayah;
 
     private ArrayList<String> id = new ArrayList<String>();
     private ArrayList<String> id_calon = new ArrayList<String>();
@@ -61,6 +65,7 @@ public class InputC1Presiden extends AppCompatActivity {
 
     String jml_surat, jml_surat_kembali, jml_surat_tdk_digunakan, jml_surat_digunakan,
             jml_surat_sah, jml_surat_tdk_sah, jml_surat_sah_dan_tdk_sah;
+    TextView title_tps_active;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +90,29 @@ public class InputC1Presiden extends AppCompatActivity {
 
         btn_simpan = findViewById(R.id.btn_simpan);
         refresh = findViewById(R.id.refresh);
+        title_tps_active = findViewById(R.id.title_tps_active);
+        filter = findViewById(R.id.filter);
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterWilayah = new FilterWilayah(context, activity, new FilterWilayah.OnEditLocationListener() {
+                    @Override
+                    public void onClickAdapter(String tps_id, String tps) {
+                        if (!session.getNamaTpsActive().equals("")) {
+                            title_tps_active.setText(session.getNamaTpsActive());
+                        } else {
+                            title_tps_active.setText(tps);
+                        }
+                        getData();
+                    }
+                });
+                filterWilayah.show();
+            }
+        });
+
+        if (!session.getNamaTpsActive().equals("")) {
+            title_tps_active.setText(session.getNamaTpsActive());
+        }
 
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override

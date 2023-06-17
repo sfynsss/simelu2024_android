@@ -12,9 +12,15 @@
     <!--    <color name="green_dark">#008E3E</color>-->
     <!--    <color name="green_secondary">#D9FBDE</color>-->
 
-    <color name="green_dark">#003DAC</color>
-    <color name="green_primary">#008DE6</color>
-    <color name="green_secondary">#4DDAEE</color>
+    <color name="blue_dark">#003DAC</color>
+    <color name="blue_primary">#008DE6</color>
+    <color name="blue_secondary">#4DDAEE</color>
+
+    <color name="orange_dark">#e63757</color>
+    <color name="orange_primary">#FF5001</color>
+    <color name="orange_secondary">#FF965A</color>
+    <color name="grey">#5b7c99</color>
+    <color name="blue_teal">#cfe8ef</color>
 
     <color name="yellow_primary">#FFCC00</color>
     <color name="yellow_secondary">#F9E682</color>

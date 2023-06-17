@@ -36,7 +36,7 @@ public class Session {
     }
 
     public String getBaseUrl() {
-        return preferences.getString("baseUrl", "192.168.1.15:8000");
+        return preferences.getString("baseUrl", "192.168.1.8:8000");
     }
 
     public boolean getUserLoggedIn() {
@@ -91,12 +91,13 @@ public class Session {
         return preferences.getString("provinsi", "");
     }
 
-    public void setWilayah(String provinsi, String kabupaten, String kecamatan, String desa, String tps) {
+    public void setWilayah(String provinsi, String kabupaten, String kecamatan, String desa, String tps, String nama_tps) {
         editor.putString("filter_provinsi", provinsi);
         editor.putString("filter_kabupaten", kabupaten);
         editor.putString("filter_kecamatan", kecamatan);
         editor.putString("filter_desa", desa);
         editor.putString("filter_tps", tps);
+        editor.putString("filter_nama_tps", nama_tps);
         editor.commit();
     }
 
@@ -118,6 +119,10 @@ public class Session {
 
     public String getTpsActive() {
         return preferences.getString("filter_tps", "");
+    }
+
+    public String getNamaTpsActive() {
+        return preferences.getString("filter_nama_tps", "");
     }
 }
 

@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/bg_header"
+        android:background="@drawable/bg_header2"
         android:gravity="center_vertical">
 
         <TextView
@@ -41,11 +41,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/title_tps_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/orange_primary"
+                android:layout_gravity="center"
+                />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/card1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"

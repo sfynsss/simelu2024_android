@@ -123,7 +123,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:text="Terapkan"
-            android:background="@drawable/bt_absen_datang"
+            android:background="@drawable/bt_secondary_round"
             android:textColor="@color/white"></androidx.appcompat.widget.AppCompatButton>
     </androidx.appcompat.widget.LinearLayoutCompat>
 

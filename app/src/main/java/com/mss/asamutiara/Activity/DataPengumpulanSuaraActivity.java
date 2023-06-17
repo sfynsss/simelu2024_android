@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -118,4 +120,12 @@ public class DataPengumpulanSuaraActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(DataPengumpulanSuaraActivity.this, MainActivity.class));
+        finish();
+    }
+
 }

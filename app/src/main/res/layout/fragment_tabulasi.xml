@@ -226,6 +226,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:visibility="invisible"
                     android:id="@+id/berkas"
                     android:clickable="true"
                     android:layout_width="0dp"

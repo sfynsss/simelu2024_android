@@ -9,6 +9,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,6 +110,16 @@ public class BerandaFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == 1) {
+                getUser();
+            }
+        }
+    }
+
     public void getUser() {
         LoaderUi2.show();
         cekSession = api.cekSession();
@@ -154,15 +165,5 @@ public class BerandaFragment extends Fragment {
                 Toast.makeText(getContext(), "Error on Failur, "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 0) {
-            if (resultCode == 1) {
-                getUser();
-            }
-        }
     }
 }

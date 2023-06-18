@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.InputBerkasC1"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_header2"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Input Berkas C1"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            android:textStyle="bold"></TextView>
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Gambar C1"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="12dp"/>
+        <ImageView
+            android:id="@+id/gambar_c1"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="250dp"
+            android:background="@drawable/bt_outline_secondary"></ImageView>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_simpan"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:text="SIMPAN"
+            android:textColor="@color/white"
+            android:background="@drawable/bt_primary_round"></androidx.appcompat.widget.AppCompatButton>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

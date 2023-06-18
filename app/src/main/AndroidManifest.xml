@@ -27,6 +27,12 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".Activity.InputBerkasC1"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DataBerkasC1"
+            android:exported="true" />
+        <activity
             android:name=".Activity.EditProfileActivity"
             android:exported="true" />
         <activity

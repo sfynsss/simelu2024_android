@@ -239,4 +239,11 @@ public interface Api {
     Call<BaseResponse> ubahPassword(
             @Field("password") String password
     );
+
+    @FormUrlEncoded
+    @POST("insertBerkasC1")
+    Call<BaseResponse> insertBerkasC1(
+            @Field("tps_id") String tps_id,
+            @Field("gambar_c1") String gambar_c1
+    );
 }

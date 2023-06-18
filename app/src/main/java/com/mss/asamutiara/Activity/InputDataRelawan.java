@@ -80,6 +80,7 @@ public class InputDataRelawan extends AppCompatActivity {
     String tmp_kecamatan_id = "";
     String tmp_desa_id = "";
     String tmp_tps_id = "";
+    String tmp_calon_id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +159,8 @@ public class InputDataRelawan extends AppCompatActivity {
                             response.body().getData().get(0).getDesaId() : "";
                     tmp_tps_id = !TextUtils.isEmpty(response.body().getData().get(0).getTpsId()) ?
                             response.body().getData().get(0).getTpsId() : "";
+                    tmp_calon_id = !TextUtils.isEmpty(response.body().getData().get(0).getCalonId()) ?
+                            response.body().getData().get(0).getCalonId() : "";
                 } else {
                     LoaderUi.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);
@@ -197,7 +200,7 @@ public class InputDataRelawan extends AppCompatActivity {
         callCreateRelawan = api.createRelawan(tmp_nama_relawan+"", tmp_email_relawan+"",
                 tmp_password_relawan+"", tmp_nik_relawan+"", tmp_dapil_provinsi_id,
                 tmp_kabupaten_id+"", tmp_dapil_kabupaten_id+"", tmp_kecamatan_id+"",
-                tmp_desa_id+"", tmp_tps_id+"", "", tmp_no_telp_relawan+"",
+                tmp_desa_id+"", tmp_tps_id+"", tmp_calon_id+"", tmp_no_telp_relawan+"",
                 tmp_target_relawan+"", list_hierarki_id.get(hierarki.getSelectedItemPosition())+"",
                 tmp_relawan_id+"");
         callCreateRelawan.enqueue(new Callback<BaseResponse>() {

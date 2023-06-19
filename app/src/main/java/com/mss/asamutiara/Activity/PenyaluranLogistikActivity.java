@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
@@ -19,6 +20,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,20 +54,24 @@ public class PenyaluranLogistikActivity extends AppCompatActivity {
     Call<BaseResponse<Relawan>> callGetDataRelawan;
     Call<BaseResponse> callInsertDetailLogistik;
 
-    TextView penyalur;
+    EditText penyalur, nama_barang, jumlah_barang;
     AppCompatSpinner penerima;
     ImageView bukti_penerimaan;
     AppCompatButton btn_simpan;
 
+    private GpsTracker gpsTracker;
     ArrayList<String> list_id = new ArrayList<>();
     ArrayList<String> list_relawan = new ArrayList<>();
     String base64Photo = "", id_master = "", id_penyalur = "";
+    Double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_penyaluran_logistik);
 
+        nama_barang = findViewById(R.id.nama_barang);
+        jumlah_barang = findViewById(R.id.jumlah_barang);
         penyalur = findViewById(R.id.penyalur);
         penerima = findViewById(R.id.penerima);
         bukti_penerimaan = findViewById(R.id.bukti_penerimaan);
@@ -78,9 +84,7 @@ public class PenyaluranLogistikActivity extends AppCompatActivity {
         session = new Session(context);
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
 
-        penyalur.setText(getIntent().getStringExtra("penyalur"));
-        id_penyalur = getIntent().getStringExtra("id_penyalur");
-        id_master = getIntent().getStringExtra("id_master_logistik");
+        penyalur.setText(session.getNama());
 
         bukti_penerimaan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +109,16 @@ public class PenyaluranLogistikActivity extends AppCompatActivity {
                 insertDetailLogistik();
             }
         });
+
+        try {
+            if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            } else {
+                getLocation();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         getDataRelawan();
     }
@@ -150,10 +164,12 @@ public class PenyaluranLogistikActivity extends AppCompatActivity {
             loaderUi.dismiss();
             Toast.makeText(context, "Silahkan masukkan gambar terlebih dahulu", Toast.LENGTH_SHORT).show();
         } else {
-//            Log.d("TAG", "insertDetailLogistik: "+id_master+""+ id_penyalur+""+
-//                    list_id.get(penerima.getSelectedItemPosition())+"");
-            callInsertDetailLogistik = api.insertDetailLogistik(id_master+"", id_penyalur+"",
-                    list_id.get(penerima.getSelectedItemPosition())+"", base64Photo+"");
+            String tmp_nama_barang = nama_barang.getText().toString();
+            String tmp_jumlah_barang = jumlah_barang.getText().toString();
+            String tmp_penerima = list_id.get(penerima.getSelectedItemPosition());
+
+            callInsertDetailLogistik = api.insertLogistik(tmp_nama_barang+"", tmp_jumlah_barang+"",
+                    tmp_penerima+"", latitude+"", longitude+"", base64Photo+"");
             callInsertDetailLogistik.enqueue(new Callback<BaseResponse>() {
                 @Override
                 public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -207,5 +223,15 @@ public class PenyaluranLogistikActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream);
         byte[] imgBytes = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(imgBytes, Base64.DEFAULT);
+    }
+
+    public void getLocation(){
+        gpsTracker = new GpsTracker(context);
+        if(gpsTracker.canGetLocation()){
+            latitude = gpsTracker.getLatitude();
+            longitude = gpsTracker.getLongitude();
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
     }
 }

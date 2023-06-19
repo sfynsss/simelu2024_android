@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
@@ -27,6 +30,8 @@ import com.mss.asamutiara.Response.BaseResponse;
 import com.mss.asamutiara.Session.Session;
 import com.mss.asamutiara.Table.CekSession;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,8 +42,9 @@ public class BerandaFragment extends Fragment {
     LinearLayout btn_relawan_anggota, btn_logistik;
 
     TextView nama_pengguna, nama_hierarki, nama_calon, target, perolehan, kurang;
-    TextView judul_button, detail_judul_button;
+    TextView judul_button, detail_judul_button, judul_hierarki;
     ImageView img_profil;
+    LinearLayoutCompat d_content_hierarki;
 
     LoaderUi2 LoaderUi2;
     Session session;
@@ -46,6 +52,12 @@ public class BerandaFragment extends Fragment {
     Call<BaseResponse<CekSession>> cekSession;
 
     int tmp_hierarki = 0;
+    AdapterRelawanParent adapterRelawanParent;
+    RecyclerView recycler_hierarki;
+
+    ArrayList<String> id = new ArrayList<String>();
+    ArrayList<String> judul = new ArrayList<String>();
+    ArrayList<String> nama_relawan = new ArrayList<String>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +82,9 @@ public class BerandaFragment extends Fragment {
         kurang = view.findViewById(R.id.kurang);
         judul_button = view.findViewById(R.id.judul_button);
         detail_judul_button = view.findViewById(R.id.detail_judul_button);
+        recycler_hierarki = view.findViewById(R.id.recycle_hierarki);
+        judul_hierarki = view.findViewById(R.id.judul_hierarki);
+        d_content_hierarki = view.findViewById(R.id.d_content_hierarki);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -147,6 +162,41 @@ public class BerandaFragment extends Fragment {
                         judul_button.setText("Relawan Anggota");
                         detail_judul_button.setText("Lihat relawan anggota");
                     }
+
+                    Log.d("TAG", "onResponse: "+response.body().getData().get(0).getRelawan().size());
+                    if (tmp_hierarki > 1) {
+                        judul_hierarki.setVisibility(View.VISIBLE);
+                        d_content_hierarki.setVisibility(View.VISIBLE);
+                    }
+
+                    id.clear();
+                    judul.clear();
+                    nama_relawan.clear();
+
+                    for (int i = 0; i < response.body().getData().get(0).getRelawan().size() - 1; i++) {
+                        id.add(response.body().getData().get(0).getRelawan().get(i).getId().toString());
+                        String tmp_val = "";
+                        if (response.body().getData().get(0).getRelawan().get(i).getHierarkiId() == 1) {
+                            tmp_val = "KOORDINATOR DAPIL PROVINSI " + response.body().getData().get(0).getRelawan().get(i).getDapilProvinsi();
+                        } else if (response.body().getData().get(0).getRelawan().get(i).getHierarkiId() == 2) {
+                            tmp_val = "KOORDINATOR KABUPATEN " + response.body().getData().get(0).getRelawan().get(i).getKabupaten();
+                        } else if (response.body().getData().get(0).getRelawan().get(i).getHierarkiId() == 3) {
+                            tmp_val = "KOORDINATOR DAPIL KABUPATEN " + response.body().getData().get(0).getRelawan().get(i).getDapilKabupaten();
+                        } else if (response.body().getData().get(0).getRelawan().get(i).getHierarkiId() == 4) {
+                            tmp_val = "KOORDINATOR KECAMATAN " + response.body().getData().get(0).getRelawan().get(i).getKecamatan();
+                        } else if (response.body().getData().get(0).getRelawan().get(i).getHierarkiId() == 5) {
+                            tmp_val = "KOORDINATOR DESA " + response.body().getData().get(0).getRelawan().get(i).getDesa();
+                        } else if (response.body().getData().get(0).getRelawan().get(i).getHierarkiId() == 6) {
+                            tmp_val = "KOORDINATOR TPS " + response.body().getData().get(0).getRelawan().get(i).getTps();
+                        }
+                        judul.add(tmp_val);
+                        nama_relawan.add(response.body().getData().get(0).getRelawan().get(i).getNama());
+                    }
+
+                    adapterRelawanParent = new AdapterRelawanParent(getContext(), getActivity(), id, judul, nama_relawan);
+                    adapterRelawanParent.notifyDataSetChanged();
+                    recycler_hierarki.setLayoutManager(new GridLayoutManager(getContext(), 2));
+                    recycler_hierarki.setAdapter(adapterRelawanParent);
                 } else {
                     LoaderUi2.dismiss();
                     ApiError apiError = ErrorUtils.parseError(response);

@@ -20,18 +20,30 @@ public class MasterLogistik {
     @SerializedName("keterangan")
     @Expose
     private String keterangan;
-    @SerializedName("relawan_id")
+    @SerializedName("penyalur")
     @Expose
-    private Integer relawanId;
+    private Integer penyalur;
     @SerializedName("created_at")
     @Expose
     private String createdAt;
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-    @SerializedName("nama")
+    @SerializedName("penerima")
     @Expose
-    private String nama;
+    private Integer penerima;
+    @SerializedName("lat")
+    @Expose
+    private String lat;
+    @SerializedName("long")
+    @Expose
+    private String _long;
+    @SerializedName("nama_penyalur")
+    @Expose
+    private String namaPenyalur;
+    @SerializedName("nama_penerima")
+    @Expose
+    private String namaPenerima;
 
     public Integer getId() {
         return id;
@@ -73,12 +85,12 @@ public class MasterLogistik {
         this.keterangan = keterangan;
     }
 
-    public Integer getRelawanId() {
-        return relawanId;
+    public Integer getPenyalur() {
+        return penyalur;
     }
 
-    public void setRelawanId(Integer relawanId) {
-        this.relawanId = relawanId;
+    public void setPenyalur(Integer penyalur) {
+        this.penyalur = penyalur;
     }
 
     public String getCreatedAt() {
@@ -97,12 +109,45 @@ public class MasterLogistik {
         this.updatedAt = updatedAt;
     }
 
-    public String getNama() {
-        return nama;
+    public Integer getPenerima() {
+        return penerima;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setPenerima(Integer penerima) {
+        this.penerima = penerima;
     }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLong() {
+        return _long;
+    }
+
+    public void setLong(String _long) {
+        this._long = _long;
+    }
+
+    public String getNamaPenyalur() {
+        return namaPenyalur;
+    }
+
+    public void setNamaPenyalur(String namaPenyalur) {
+        this.namaPenyalur = namaPenyalur;
+    }
+
+    public String getNamaPenerima() {
+        return namaPenerima;
+    }
+
+    public void setNamaPenerima(String namaPenerima) {
+        this.namaPenerima = namaPenerima;
+    }
+
 
 }

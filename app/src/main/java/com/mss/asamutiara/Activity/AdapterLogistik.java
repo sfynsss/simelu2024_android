@@ -31,27 +31,32 @@ public class AdapterLogistik extends ArrayAdapter<String> {
     private Activity context;
     private Context mContext;
     private ArrayList<String> id = new ArrayList<>();
-    private ArrayList<String> posisi_logistik = new ArrayList<>();
-    private ArrayList<String> gambar_logistik = new ArrayList<>();
+    private ArrayList<String> penyalur = new ArrayList<>();
+    private ArrayList<String> penerima = new ArrayList<>();
+    private ArrayList<String> foto = new ArrayList<>();
     private ArrayList<String> nama_barang = new ArrayList<>();
     private ArrayList<String> jumlah_logistik = new ArrayList<>();
-    private OnEditLocationListener salurkan;
+    private ArrayList<String> lat = new ArrayList<>();
+    private ArrayList<String> leng = new ArrayList<>();
     RequestOptions option;
     Session session;
 
     public AdapterLogistik(Activity context, ArrayList<String> id,
-                           ArrayList<String> posisi_logistik, ArrayList<String> gambar_logistik, ArrayList<String> nama_barang,
-                           ArrayList<String> jumlah_logistik, OnEditLocationListener salurkan) {
+                           ArrayList<String> penyalur, ArrayList<String> penerima, ArrayList<String> foto,
+                           ArrayList<String> nama_barang, ArrayList<String> jumlah_logistik,
+                           ArrayList<String> lat, ArrayList<String> leng) {
         super(context, R.layout.adapter_logistik, id);
 
         this.context = context;
         this.mContext = context;
         this.id = id;
-        this.posisi_logistik = posisi_logistik;
-        this.gambar_logistik = gambar_logistik;
+        this.penyalur = penyalur;
+        this.penerima = penerima;
+        this.foto = foto;
         this.nama_barang = nama_barang;
         this.jumlah_logistik = jumlah_logistik;
-        this.salurkan = salurkan;
+        this.lat = lat;
+        this.leng = leng;
 
         option = new RequestOptions().placeholder(R.drawable.ic_hourglass_empty_24).error(R.drawable.ic_highlight_off_24);
         session = new Session(context);
@@ -71,45 +76,41 @@ public class AdapterLogistik extends ArrayAdapter<String> {
             viewHolder = (ViewHolder) v.getTag();
         }
 
-        if (gambar_logistik.get(position).equals("")) {
+        if (foto.get(position).equals("")) {
             viewHolder.gambar_logistik.setImageResource(R.drawable.ic_hourglass_empty_24);
         } else {
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.signature(
                     new ObjectKey(String.valueOf(System.currentTimeMillis())));
+            requestOptions.placeholder(R.drawable.ic_hourglass_empty_24).error(R.drawable.ic_highlight_off_24);
             Glide.with(mContext)
                     .setDefaultRequestOptions(requestOptions)
 //                    .load("http://192.168.1.16:8000/storage/" + gambar.get(position) + "").into(holder.gambar);
                     .load("http://" + session.getBaseUrl() + "/storage/upload/master_logistik/"+ id.get(position)
-                            +"/" + gambar_logistik.get(position) + "").into(viewHolder.gambar_logistik);
+                            +"/" + foto.get(position) + "").into(viewHolder.gambar_logistik);
         }
 
-        viewHolder.posisi_logistik.setText(posisi_logistik.get(position));
+        viewHolder.penyalur.setText(penyalur.get(position));
+        viewHolder.penerima.setText(penerima.get(position));
         viewHolder.nama_barang.setText(nama_barang.get(position));
         viewHolder.jumlah.setText(jumlah_logistik.get(position));
-
-        viewHolder.btn_salur.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (salurkan != null) {
-                    salurkan.onClickAdapter(position);
-                }
-            }
-        });
+        viewHolder.lat.setText(lat.get(position));
+        viewHolder.leng.setText(leng.get(position));
 
         return v;
     }
 
     class ViewHolder{
-        TextView posisi_logistik, nama_barang, jumlah;
+        TextView penyalur, penerima, lat, leng, nama_barang, jumlah;
         ImageView gambar_logistik;
-        AppCompatButton btn_salur;
         ViewHolder(View view){
-            posisi_logistik = view.findViewById(R.id.posisi_logistik);
+            penyalur = view.findViewById(R.id.penyalur);
+            penerima = view.findViewById(R.id.penerima);
+            lat = view.findViewById(R.id.lat);
+            leng = view.findViewById(R.id.leng);
             nama_barang = view.findViewById(R.id.nama_barang);
             jumlah = view.findViewById(R.id.jumlah);
             gambar_logistik = view.findViewById(R.id.gambar_logistik);
-            btn_salur = view.findViewById(R.id.btn_salur);
         }
     }
 

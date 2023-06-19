@@ -3,6 +3,8 @@ package com.mss.asamutiara.Table;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class CekSession {
     @SerializedName("id")
     @Expose
@@ -85,6 +87,10 @@ public class CekSession {
     @SerializedName("suara_count")
     @Expose
     private Integer suaraCount;
+    @SerializedName("relawan")
+    @Expose
+    private List<Relawan> relawan;
+
 
     public Integer getId() {
         return id;
@@ -300,6 +306,14 @@ public class CekSession {
 
     public void setSuaraCount(Integer suaraCount) {
         this.suaraCount = suaraCount;
+    }
+
+    public List<Relawan> getRelawan() {
+        return relawan;
+    }
+
+    public void setRelawan(List<Relawan> relawan) {
+        this.relawan = relawan;
     }
 
 }

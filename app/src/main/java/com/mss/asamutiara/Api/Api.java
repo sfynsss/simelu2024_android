@@ -226,11 +226,13 @@ public interface Api {
     Call<BaseResponse<Relawan>> getRelawanPenerima();
 
     @FormUrlEncoded
-    @POST("insertDetailLogistik")
-    Call<BaseResponse> insertDetailLogistik(
-            @Field("id_master") String id_master,
-            @Field("id_penyalur") String id_penyalur,
+    @POST("insertLogistik")
+    Call<BaseResponse> insertLogistik(
+            @Field("nama_barang") String nama_barang,
+            @Field("jumlah_barang") String jumlah_barang,
             @Field("penerima") String penerima,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude,
             @Field("foto_detail") String foto_detail
     );
 

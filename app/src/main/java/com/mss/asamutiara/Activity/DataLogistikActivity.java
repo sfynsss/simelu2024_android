@@ -7,9 +7,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mss.asamutiara.Api.Api;
 import com.mss.asamutiara.Api.RetrofitClient;
 import com.mss.asamutiara.Helpers.ApiError;
@@ -36,14 +38,17 @@ public class DataLogistikActivity extends AppCompatActivity {
     Call<BaseResponse<MasterLogistik>> callGetMasterLogistik;
 
     private ArrayList<String> id = new ArrayList<>();
-    private ArrayList<String> id_penyalur = new ArrayList<>();
-    private ArrayList<String> posisi_logistik = new ArrayList<>();
-    private ArrayList<String> gambar_logistik = new ArrayList<>();
+    private ArrayList<String> penyalur = new ArrayList<>();
+    private ArrayList<String> penerima = new ArrayList<>();
+    private ArrayList<String> foto = new ArrayList<>();
     private ArrayList<String> nama_barang = new ArrayList<>();
     private ArrayList<String> jumlah_logistik = new ArrayList<>();
+    private ArrayList<String> lat = new ArrayList<>();
+    private ArrayList<String> leng = new ArrayList<>();
 
     AdapterLogistik adapterLogistik;
     ListView list_logistik;
+    FloatingActionButton btn_tambah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,13 @@ public class DataLogistikActivity extends AppCompatActivity {
         api = RetrofitClient.createServiceWithAuth(Api.class, session.getToken());
 
         list_logistik = findViewById(R.id.list_logistik);
+        btn_tambah = findViewById(R.id.btn_tambah);
+        btn_tambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(DataLogistikActivity.this, PenyaluranLogistikActivity.class), 0);
+            }
+        });
         getData();
     }
 
@@ -70,32 +82,27 @@ public class DataLogistikActivity extends AppCompatActivity {
             public void onResponse(Call<BaseResponse<MasterLogistik>> call, Response<BaseResponse<MasterLogistik>> response) {
                 if (response.isSuccessful()) {
                     id.clear();
-                    id_penyalur.clear();
-                    posisi_logistik.clear();
-                    gambar_logistik.clear();
+                    penyalur.clear();
+                    penerima.clear();
+                    foto.clear();
                     nama_barang.clear();
                     jumlah_logistik.clear();
+                    lat.clear();
+                    leng.clear();
 
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         id.add(response.body().getData().get(i).getId().toString());
-                        id_penyalur.add(response.body().getData().get(i).getRelawanId().toString());
-                        posisi_logistik.add(response.body().getData().get(i).getNama());
-                        gambar_logistik.add(response.body().getData().get(i).getFoto());
+                        penyalur.add(response.body().getData().get(i).getNamaPenyalur());
+                        penerima.add(response.body().getData().get(i).getNamaPenerima());
+                        foto.add(response.body().getData().get(i).getFoto());
                         nama_barang.add(response.body().getData().get(i).getNamaBarang());
                         jumlah_logistik.add(response.body().getData().get(i).getJumlah());
+                        lat.add(response.body().getData().get(i).getLat());
+                        leng.add(response.body().getData().get(i).getLong());
                     }
 
-                    adapterLogistik = new AdapterLogistik(activity, id, posisi_logistik, gambar_logistik, nama_barang, jumlah_logistik,
-                            new AdapterLogistik.OnEditLocationListener() {
-                                @Override
-                                public void onClickAdapter(int position) {
-                                    Intent intent = new Intent(context, PenyaluranLogistikActivity.class);
-                                    intent.putExtra("id_master_logistik", id.get(position));
-                                    intent.putExtra("penyalur", posisi_logistik.get(position));
-                                    intent.putExtra("id_penyalur", id_penyalur.get(position));
-                                    startActivityForResult(intent, 0);
-                                }
-                            });
+                    adapterLogistik = new AdapterLogistik(activity, id, penyalur, penerima,
+                            foto, nama_barang, jumlah_logistik, lat, leng);
                     adapterLogistik.notifyDataSetChanged();
                     list_logistik.setAdapter(adapterLogistik);
                     loaderUi2.dismiss();

@@ -78,6 +78,7 @@ public class AdapterPartai extends RecyclerView.Adapter<AdapterPartai.MyViewHold
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.signature(
                     new ObjectKey(String.valueOf(System.currentTimeMillis())));
+            requestOptions.placeholder(R.drawable.ic_hourglass_empty_24).error(R.drawable.ic_highlight_off_24);
             Glide.with(mContext)
                     .setDefaultRequestOptions(requestOptions)
 //                    .load("http://192.168.1.16:8000/storage/" + gambar.get(position) + "").into(holder.gambar);

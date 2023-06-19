@@ -182,10 +182,39 @@
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    android:id="@+id/judul_hierarki"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:text="Hierarki"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/d_content_hierarki"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycle_hierarki"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
                     android:text="Menu Beranda"
                     android:textColor="@color/black"
                     android:textStyle="bold"></TextView>
@@ -195,7 +224,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bt_white_round">
 
                     <ImageView
@@ -237,6 +266,7 @@
                     android:layout_height="80dp"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/bt_white_round">
 
                     <ImageView

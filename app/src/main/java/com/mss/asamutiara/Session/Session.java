@@ -36,7 +36,7 @@ public class Session {
     }
 
     public String getBaseUrl() {
-        return preferences.getString("baseUrl", "192.168.1.3:8000");
+        return preferences.getString("baseUrl", "simelu.jaringan.my.id");
     }
 
     public boolean getUserLoggedIn() {

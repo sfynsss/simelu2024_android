@@ -177,6 +177,23 @@
                                     android:textStyle="bold" />
                             </RelativeLayout>
 
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="35dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/bt_outline_red">
+
+                                <TextView
+                                    android:id="@+id/persentase"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text=""
+                                    android:textColor="#F44336"
+                                    android:textStyle="bold" />
+                            </RelativeLayout>
+
                         </LinearLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -187,10 +204,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="10dp"
-                    android:visibility="gone"
                     android:text="Hierarki"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"
+                    android:visibility="gone"></TextView>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/d_content_hierarki"
@@ -198,8 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    >
+                    android:weightSum="2">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recycle_hierarki"

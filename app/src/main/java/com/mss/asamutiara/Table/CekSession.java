@@ -42,6 +42,9 @@ public class CekSession {
     @SerializedName("tps_id")
     @Expose
     private String tpsId;
+    @SerializedName("tps")
+    @Expose
+    private String tps;
     @SerializedName("calon_id")
     @Expose
     private String calonId;
@@ -186,6 +189,14 @@ public class CekSession {
 
     public void setTpsId(String tpsId) {
         this.tpsId = tpsId;
+    }
+
+    public String getTps() {
+        return tps;
+    }
+
+    public void setTps(String tps) {
+        this.tps = tps;
     }
 
     public String getCalonId() {

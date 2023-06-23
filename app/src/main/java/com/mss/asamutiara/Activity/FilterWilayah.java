@@ -430,7 +430,12 @@ public class FilterWilayah {
                     for (int i = 0; i < response.body().getData().size(); i++) {
 //                        list_kota.add(response.body().getData().get(i).getType()+" "+response.body().getData().get(i).getCityName());
                         list_tps_id.add(response.body().getData().get(i).getId().toString());
-                        list_tps.add(response.body().getData().get(i).getDesa()+" "+response.body().getData().get(i).getNomerTps());
+                        if (response.body().getData().get(i).getUtama() == 0) {
+                            list_tps.add(response.body().getData().get(i).getDesa()+" "+response.body().getData().get(i).getNomerTps());
+                        } else {
+                            list_tps.add(response.body().getData().get(i).getDesa()+" "
+                                    +response.body().getData().get(i).getNomerTps()+" (utama)");
+                        }
                     }
 
                     //Ini buat ngisi Spinner

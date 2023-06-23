@@ -41,7 +41,7 @@ public class BerandaFragment extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     LinearLayout btn_relawan_anggota, btn_logistik;
 
-    TextView nama_pengguna, nama_hierarki, nama_calon, target, perolehan, kurang;
+    TextView nama_pengguna, nama_hierarki, nama_calon, target, perolehan, kurang, persentase;
     TextView judul_button, detail_judul_button, judul_hierarki;
     ImageView img_profil;
     LinearLayoutCompat d_content_hierarki;
@@ -80,6 +80,7 @@ public class BerandaFragment extends Fragment {
         target = view.findViewById(R.id.target);
         perolehan = view.findViewById(R.id.perolehan);
         kurang = view.findViewById(R.id.kurang);
+        persentase = view.findViewById(R.id.persentase);
         judul_button = view.findViewById(R.id.judul_button);
         detail_judul_button = view.findViewById(R.id.detail_judul_button);
         recycler_hierarki = view.findViewById(R.id.recycle_hierarki);
@@ -145,7 +146,12 @@ public class BerandaFragment extends Fragment {
                     LoaderUi2.dismiss();
                     tmp_hierarki = response.body().getData().get(0).getHierarkiId();
                     nama_pengguna.setText(response.body().getData().get(0).getNama());
-                    nama_hierarki.setText(response.body().getData().get(0).getNamaHierarki());
+                    if (tmp_hierarki == 6) {
+                        nama_hierarki.setText(response.body().getData().get(0).getNamaHierarki()+" \n"
+                                +response.body().getData().get(0).getDesa()+" "+response.body().getData().get(0).getTps());
+                    } else {
+                        nama_hierarki.setText(response.body().getData().get(0).getNamaHierarki());
+                    }
                     if (!TextUtils.isEmpty(response.body().getData().get(0).getNamaCalon())) {
                         nama_calon.setText(response.body().getData().get(0).getNamaCalon());
                     } else {
@@ -154,7 +160,9 @@ public class BerandaFragment extends Fragment {
                     target.setText(response.body().getData().get(0).getTarget().toString());
                     perolehan.setText(response.body().getData().get(0).getSuaraCount().toString());
                     int tmp_kurang = response.body().getData().get(0).getSuaraCount() - response.body().getData().get(0).getTarget();
+                    double tmp_persentase = ((double) response.body().getData().get(0).getSuaraCount() / (double) response.body().getData().get(0).getTarget()) * 100;
                     kurang.setText(tmp_kurang+"");
+                    persentase.setText(Math.round(tmp_persentase)+"%");
                     if (tmp_hierarki == 6) {
                         judul_button.setText("Pengumpulan Suara");
                         detail_judul_button.setText("Lihat data suara");
@@ -163,7 +171,7 @@ public class BerandaFragment extends Fragment {
                         detail_judul_button.setText("Lihat relawan anggota");
                     }
 
-                    Log.d("TAG", "onResponse: "+response.body().getData().get(0).getRelawan().size());
+//                    Log.d("TAG", "onResponse: "+response.body().getData().get(0).getRelawan().size());
                     if (tmp_hierarki > 1) {
                         judul_hierarki.setVisibility(View.VISIBLE);
                         d_content_hierarki.setVisibility(View.VISIBLE);

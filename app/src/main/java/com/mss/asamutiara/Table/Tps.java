@@ -23,6 +23,9 @@ public class Tps {
     @SerializedName("desa")
     @Expose
     private String desa;
+    @SerializedName("utama")
+    @Expose
+    private Integer utama;
 
     public Integer getId() {
         return id;
@@ -72,4 +75,11 @@ public class Tps {
         this.desa = desa;
     }
 
+    public Integer getUtama() {
+        return utama;
+    }
+
+    public void setUtama(Integer utama) {
+        this.utama = utama;
+    }
 }
